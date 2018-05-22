@@ -28,7 +28,26 @@
                             <div class="col-sm-6">
                                 <input type="text" name="name_consumer" id="consumer-name_consumer" class="form-control" value="{{ old('consumer') }}">
                             </div>
-                        </div>    
+                        </div>  
+                        <div class="form-group">
+                            <label for="consumer-kod_rem" class="col-sm-6 control-label">Код РЕМ</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="kod_rem" id="consumer-kod_rem" class="form-control" value="{{ old('consumer') }}">
+                            </div>
+                        </div>      
+                        <div class="form-group">
+                            <label for="consumer-kod_otr" class="col-sm-6 control-label">Код галузі</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="kod_otr" id="consumer-kod_otr" class="form-control" value="{{ old('consumer') }}">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="consumer-kod_podotr" class="col-sm-6 control-label">Код підгалузі</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="kod_podotr" id="consumer-kod_podotr" class="form-control" value="{{ old('consumer') }}">
+                            </div>
+                        </div>       
+
 
                         <!-- Add Task Button -->
                         <div class="form-group">
@@ -54,6 +73,9 @@
                             <thead>
                                 <th>Код</th>
                                 <th>Назва</th>
+                                <th>Код РЕМ</th>
+                                <th>Код галузі</th>
+                                <th>Код підгалузі</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
@@ -61,6 +83,9 @@
                                     <tr>
                                         <td class="table-text"><div>{{ $consumer->kod_consumer }}</div></td>
                                         <td class="table-text"><div>{{ $consumer->name_consumer }}</div></td>
+                                        <td class="table-text"><div>{{ $consumer->kod_rem }}</div></td>
+                                        <td class="table-text"><div>{{ $consumer->kod_otr }}</div></td>
+                                        <td class="table-text"><div>{{ $consumer->kod_podotr }}</div></td>
 
                                         <!-- Task Delete Button -->
                                         <td>

@@ -25,7 +25,7 @@ use Illuminate\Http\Request;
   /**
    * Вывести панель с со списком потребителей
    */
-  Route::get('/consumer_list', function () {
+  /*Route::get('/consumer_list', function () {
 
     $consumers = Consumer::orderBy('created_at', 'asc')->get();
 
@@ -33,35 +33,49 @@ use Illuminate\Http\Request;
       'consumers' => $consumers
     ]);
       //return view('consumers');
-  });
+  });*/
+  //Route::get('/consumer_list', 'ConsumerController@show')->middleware('auth');
+  Route::get('/consumer_list', 'ConsumerController@show');
 
   /**
    * Добавить нового потребителя
    */
-  Route::post('/consumer_add', function (Request $request) {
+  Route::post('/consumer_add', 'ConsumerController@store');
+  
+  /*Route::post('/consumer_add', function (Request $request) {
     $validator = Validator::make($request->all(), [
-    'kod_consumer' => 'required|max:255',  
+    'kod_consumer' => 'required|max:5',  
     'name_consumer' => 'required|max:255',
-  ]);
+    'kod_rem' => 'required|max:3',
+    'kod_otr' => 'required|max:3',
+    'kod_podotr' => 'required|max:3',
+    ]);
 
-  if ($validator->fails()) {
-    return redirect('/consumer_list')
-      ->withInput()
-      ->withErrors($validator);
-  }
+    if ($validator->fails()) {
+      return redirect('/consumer_list')
+        ->withInput()
+        ->withErrors($validator);
+    }
 
-  $consumer = new Consumer;
-  $consumer->kod_consumer = $request->kod_consumer;
-  $consumer->name_consumer = $request->name_consumer;
-  $consumer->save();
+    $consumer = new Consumer;
+    $consumer->kod_consumer = $request->kod_consumer;
+    $consumer->name_consumer = $request->name_consumer;
+    $consumer->kod_rem = $request->kod_rem;
+    $consumer->kod_otr = $request->kod_otr;
+    $consumer->kod_podotr = $request->kod_podotr;
+    $consumer->save();
 
-  return redirect('/consumer_list');
-  });
+    return redirect('/consumer_list');
+  });*/
 
 
   /**
    * Удалить потребителя
    */
-  Route::delete('/consumer_del/{consumer}', function (Consumer $consumer) {
-    //
-  });
+  /*Route::delete('/consumer_del/{consumer}', function (Consumer $consumer) {
+    $consumer->delete();
+
+    return redirect('/consumer_list');
+  });*/
+
+  Route::delete('/consumer_del/{consumer}', 'ConsumerController@delete');
