@@ -62,7 +62,7 @@ class ConsumerController extends Controller
 		    
     
 		    //return redirect('/consumer_list')->with('success', 'Company added.');
-		    return redirect('/consumer_list');
+		    return redirect('/consumer_list')->with('alert', 'Додано!');
 		  
   } 
 
@@ -71,7 +71,7 @@ class ConsumerController extends Controller
 
   	$consumer->delete();
 
-    return redirect('/consumer_list');
+    return redirect('/consumer_list')->with('alert', 'Вилучено!');
 
   }
 }

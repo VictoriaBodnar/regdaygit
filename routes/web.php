@@ -79,3 +79,27 @@ use Illuminate\Http\Request;
   });*/
 
   Route::delete('/consumer_del/{consumer}', 'ConsumerController@delete');
+
+  /***  rems  **************************************************************************************************/
+
+  Route::resource('rems', 'RemController');
+  /*Один этот вызов создаёт множество маршрутов для обработки различных действий для ресурса. 
+  Тип     URI                     Действие  Имя маршрута
+  GET     /photos                 index     photo.index
+  GET     /photos/create          create    photo.create
+  POST    /photos                 store     photo.store
+  GET     /photos/{photo}         show      photo.show
+  GET     /photos/{photo}/edit    edit      photo.edit
+  PUT     /PATCH /photos/{photo}  update    photo.update
+  DELETE  /photos/{photo}         destroy   photo.destroy*/
+
+/*Тип     URI                     Действие  Имя маршрута
+  GET     /rems                   index     rem.index
+  GET     /rems/create            create    rem.create
+  POST    /rems                   store     rem.store
+  GET     /rems/{rem}             show      rem.show
+  GET     /rems/{rem}/edit        edit      rem.edit
+  PUT     /PATCH /rems/{rem}      update    rem.update
+  DELETE  /rems/{rem}             destroy   rem.destroy*/
+
+

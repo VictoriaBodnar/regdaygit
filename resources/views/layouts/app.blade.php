@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <!--<script src="{{asset('js/jquery-3.1.1.min.js')}}"></script> -->
+    <!--<script type="text/javascript" src="<?php echo asset('assets/js/jquery-3.1.1.min.js'); ?>"></script> -->
+    <script>
+     $(document).ready (function(){
+            $("#success-alert").fadeTo(1000, 0.4).slideUp(500, function(){
+            $("#success-alert").slideUp(500);
+            });
+     });       
+    </script>
 </body>
 </html>

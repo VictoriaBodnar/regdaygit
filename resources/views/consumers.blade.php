@@ -60,6 +60,11 @@
                     </form>
                 </div>
             </div>
+            @if (session('alert'))
+                <div class="alert alert-success" id="success-alert">
+                    {{ session('alert') }}
+                </div>
+            @endif
 
             <!-- Current Tasks -->
             @if (count($consumers) > 0)
