@@ -100,7 +100,15 @@ class RemController extends Controller
      */
     public function edit($id)
     {
-        //
+
+       /*$crud = Crud::find($id);
+       return view('crud.edit', compact('crud','id'));*/
+
+
+       $rem = Rem::find($id);
+       //return redirect('/rems')->with('alert', 'ZZZZZZZZZZZ!');
+       return view('rems.edit',compact('rem','id'));
+       //return ('edit method runs!');
     }
 
     /**
@@ -112,7 +120,14 @@ class RemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return ('update method runs!');
+        $rem = Rem::find($id);
+        $rem->kod_rem = $request->get('kod_rem');
+        $rem->name_rem = $request->get('name_rem');
+        $rem->kod_seti = $request->get('kod_seti');
+       // $rem->post = $request->get('name_rem');
+        $rem->save();
+        return redirect('/rems');
     }
 
     /**

@@ -88,13 +88,14 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="{{ url('rems/'.$rem->id) }}" method="POST">
+                                            <a class="btn btn-primary" href="{{ route('rems.edit',$rem->id) }}">Редагувати</a>
+                                            <!--<form action="{{ url('rems/'.$rem->id) }}" method="POST">
                                                 {{ csrf_field() }}
-                                                {{ method_field('EDIT') }}
+                                                {{ method_field('GET') }}
 
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-btn fa-trash"></i>Редагувати
-                                                </button>
+                                                </button>-->
                                             </form>
                                         </td>
                                     </tr>
