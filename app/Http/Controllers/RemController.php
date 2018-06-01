@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Rem;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RemController extends Controller
 {
@@ -74,6 +75,8 @@ class RemController extends Controller
             $rem->kod_rem = $request->kod_rem;
             $rem->name_rem = $request->name_rem;
             $rem->kod_seti = $request->kod_seti;
+            $rem->user_id = Auth::user()->id;
+            $rem->save();
             $rem->save();
             
     
@@ -101,18 +104,14 @@ class RemController extends Controller
     public function edit($id)
     {
 
-       /*$crud = Crud::find($id);
-       return view('crud.edit', compact('crud','id'));*/
-
-
+       
        $rem = Rem::find($id);
-       //return redirect('/rems')->with('alert', 'ZZZZZZZZZZZ!');
-       return view('rems.edit',compact('rem','id'));
+       return view('editRems',compact('rem','id'));
        //return ('edit method runs!');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -120,14 +119,15 @@ class RemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return ('update method runs!');
-        $rem = Rem::find($id);
+        
+        
+        $rem = Rem::find($id); // Retrieve a model by its primary key...
         $rem->kod_rem = $request->get('kod_rem');
         $rem->name_rem = $request->get('name_rem');
         $rem->kod_seti = $request->get('kod_seti');
-       // $rem->post = $request->get('name_rem');
+        $rem->user_id = Auth::user()->id;
         $rem->save();
-        return redirect('/rems');
+        return redirect('/rems')->with('alert', 'Запис збережено!');
     }
 
     /**

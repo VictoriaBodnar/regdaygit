@@ -92,11 +92,10 @@
                                             <!--<form action="{{ url('rems/'.$rem->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('GET') }}
-
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-btn fa-trash"></i>Редагувати
-                                                </button>-->
-                                            </form>
+                                                </button>
+                                            </form>-->
                                         </td>
                                     </tr>
                                 @endforeach

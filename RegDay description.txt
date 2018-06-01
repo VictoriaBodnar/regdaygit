@@ -1,0 +1,123 @@
+﻿PROJECT RegDay
+
+check_consumer		-	
+zam_consumer		-	consumers
+zam_graf		-	grafs
+zam_graf_2003_2016	-	
+zam_graf_2017_copy300118-	
+zam_graf_early		-	
+zam_graf_new		-	
+zam_graf_start		-	
+zam_grp			-	grps
+zam_otr			-	otrs
+zam_pasp		-	
+zam_rem			-	rems
+zam_seti		-	seties
+zam_type		-	types
+
+
+C:\wamp64>composer -v (to show )
+
+C:\wamp64>composer create-project --prefer-dist laravel/laravel regday "5.4.*" 
+
+C:\wamp64\regday>php artisan serve 
+
+выполнение встроенных миграций табл users
+C:\wamp64\regday>php artisan migrate
+
+дало ошибку 
+
+ SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was t
+ oo long; max key length is 1000 bytes
+
+гугл
+
+
+C:\wamp64\regday>php artisan migrate (будет вып для всех файлов миграций в дан сл это табл пользователей)--ПОРЯДОК ВЫПОЛНЕНИЯ ВАЖЕН,ЕСЛИ ЕСТЬ ВНЕШНИЕ КЛЮЧИ(я переименовывала названия файлов).
+
+
+C:\wamp64\regday>php artisan make:migration create_consumers_table --create=consumers
+Created Migration: 2018_05_17_105314_create_consumers_table
+
+C:\wamp64\regday>php artisan migrate --step (будут вып только те миграции, что  не были выполнены ранее)
+Migrating: 2018_05_17_105314_create_consumers_table
+Migrated:  2018_05_17_105314_create_consumers_table
+
+C:\wamp64\regday>php artisan migrate:rollback
+Rolling back: 2018_05_17_105314_create_consumers_table
+Rolled back:  2018_05_17_105314_create_consumers_table
+
+запускаем создание встроенного модуля авторизации
+C:\wamp64\regday>php artisan make:auth
+Authentication scaffolding generated successfully.
+
+
+создаем файл модель C:\wamp64\regday\app\Consumer.php
+C:\wamp64\regday>php artisan make:model Consumer
+Model created successfully.
+
+
+...ConsumerController
+
+*****************************************************************************
+Таблица rems (& CRUD)
+*****************************************************************************
+
+--Создаем файл миграции
+C:\wamp64\regday>php artisan make:migration create_rems_table --create=rems
+Created Migration: 2018_05_23_060417_create_rems_table
+
+--редактируем файл миграции 2018_05_23_060417_create_rems_table.php, добавляем поля.
+
+--выполняем миграцию
+
+C:\wamp64\regday>php artisan migrate --step (будут вып только те миграции, что  не были выполнены ранее)
+Migrating: 2018_05_23_060417_create_rems_table
+Migrated:  2018_05_23_060417_create_rems_table
+
+--Создаем файл модель для таблицы rems
+C:\wamp64\regday>php artisan make:model Rem
+Model created successfully.
+
+--Создаем контроллер ресурсов.Это контроллер с уже встроенными стандартными действиями CRUD 
+C:\wamp64\regday>php artisan make:controller RemController --resource
+Controller created successfully.
+
+*****************************************************************************
+Таблица otrs (& CRUD)
+*****************************************************************************
+
+*****************************************************************************
+Таблица seties (& CRUD)
+*****************************************************************************
+
+*****************************************************************************
+Таблица types (& CRUD)
+*****************************************************************************
+
+*****************************************************************************
+Таблица pasps (& CRUD)
+*****************************************************************************
+
+*****************************************************************************
+Таблица grafs (& CRUD)
+*****************************************************************************
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

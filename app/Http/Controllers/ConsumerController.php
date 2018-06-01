@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Consumer;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 class ConsumerController extends Controller
@@ -37,7 +38,7 @@ class ConsumerController extends Controller
   {
 		   $rules = array(
             
-            'kod_consumer' => 'required|max:5',  
+        'kod_consumer' => 'required|max:5',  
 		    'name_consumer' => 'required|max:255',
 		    'kod_rem' => 'required|numeric',
 		    'kod_otr' => 'required|numeric',
@@ -58,7 +59,8 @@ class ConsumerController extends Controller
 		    $consumer->kod_rem = $request->kod_rem;
 		    $consumer->kod_otr = $request->kod_otr;
 		    $consumer->kod_podotr = $request->kod_podotr;
-		    $consumer->save();
+        $consumer->user_id = Auth::user()->id;
+        $consumer->save();
 		    
     
 		    //return redirect('/consumer_list')->with('success', 'Company added.');
@@ -74,4 +76,36 @@ class ConsumerController extends Controller
     return redirect('/consumer_list')->with('alert', 'Вилучено!');
 
   }
+
+  public function edit($id)
+    {
+
+       
+       $consumer = Consumer::find($id);
+       return view('editConsumers',compact('consumer','id'));
+       //return ('edit method runs!');
+    }
+
+    /**
+     * Update the specified resource in storage. 
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+  
+  public function update(Request $request, $id)
+    {
+        //return ('update method runs!'.$id);      
+        $consumer = Consumer::find($id); // Retrieve a model by its primary key...
+        $consumer->kod_consumer = $request->get('kod_consumer');
+        $consumer->name_consumer = $request->get('name_consumer');
+        $consumer->kod_rem = $request->get('kod_rem');
+        $consumer->kod_otr = $request->get('kod_otr');
+        $consumer->kod_podotr = $request->get('kod_podotr');
+        $consumer->user_id = Auth::user()->id;
+        $consumer->save();
+        return redirect('/consumer_list')->with('alert', 'Запис збережено!');
+    }
+
 }

@@ -99,9 +99,12 @@
                                                 {{ method_field('DELETE') }}
 
                                                 <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-btn fa-trash"></i>Delete
+                                                    <i class="fa fa-btn fa-trash"></i>Вилучити
                                                 </button>
                                             </form>
+                                        </td>
+                                        <td>    
+                                           <a class="btn btn-primary" href="{{ url('consumer_edit/'.$consumer->id) }}">Редагувати</a>
                                         </td>
                                     </tr>
                                 @endforeach

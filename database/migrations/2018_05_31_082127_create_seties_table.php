@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRemsTable extends Migration
+class CreateSetiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateRemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rems', function (Blueprint $table) {
+        Schema::create('seties', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('kod_rem');
-            $table->integer('kod_seti')->default('0');
-            $table->string('name_rem')->default('0');
+            $table->integer('kod_seti');
+            $table->string('name_seti');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 
@@ -35,13 +34,7 @@ class CreateRemsTable extends Migration
      */
     public function down()
     {
-        
         Schema::disableForeignKeyConstraints();
-        //$table->dropForeign(['user_id']);
-        Schema::dropIfExists('rems');
-
-        /*DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('rems');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');*/
+        Schema::dropIfExists('seties');
     }
 }

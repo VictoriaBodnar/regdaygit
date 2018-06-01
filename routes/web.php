@@ -78,7 +78,14 @@ use Illuminate\Http\Request;
     return redirect('/consumer_list');
   });*/
 
-  Route::delete('/consumer_del/{consumer}', 'ConsumerController@delete');
+  Route::delete('/consumer_del/{consumer}','ConsumerController@delete');
+  Route::get('/consumer_edit/{consumer}', 'ConsumerController@edit');
+  Route::put('/consumer_edit/{consumer}','ConsumerController@update');
+  //Route::put('/PATCH/consumer_edit/{consumer}','ConsumerController@update');
+  
+
+ 
+  
 
   /***  rems  **************************************************************************************************/
 
@@ -101,5 +108,12 @@ use Illuminate\Http\Request;
   GET     /rems/{rem}/edit        edit      rem.edit
   PUT     /PATCH /rems/{rem}      update    rem.update
   DELETE  /rems/{rem}             destroy   rem.destroy*/
+
+
+
+  Route::resource('otrs', 'OtrController');
+  Route::resource('pasps', 'PaspController');
+  Route::resource('types', 'TypeController');
+  Route::resource('seties', 'SetiController');
 
 
