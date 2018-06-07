@@ -20,19 +20,18 @@ class CreateConsumersTable extends Migration
             $table->string('name_consumer',50)->unique();
             $table->integer('kod_grp')->default('0');
             $table->integer('kod_seti')->default('0');
-            $table->integer('kod_rem')->unsigned();
-            $table->integer('kod_otr')->unsigned();
-            $table->integer('kod_podotr')->unsigned();
+            $table->integer('rem_id')->unsigned();
+            $table->integer('otr_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('restrict');
-            $table->foreign('kod_rem')
+            $table->foreign('rem_id')
                   ->references('id')->on('rems')
                   ->onDelete('restrict');
-            $table->foreign('kod_otr')
+            $table->foreign('otr_id')
                   ->references('id')->on('otrs')
                   ->onDelete('restrict');
         });

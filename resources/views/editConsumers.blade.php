@@ -7,33 +7,36 @@
       <input name="_method" type="hidden" value="PUT"><!-- або  {{ method_field('PUT') }}-->
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Код Споживача</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="kod_consumer" value="{{$consumer->kod_consumer}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="kod_consumer" value="{{$consumerCur->kod_consumer}}">
       </div>
     </div>  
     <div class="form-group row">  
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Назва Споживача</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="name_consumer" value="{{$consumer->name_consumer}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="name_consumer" value="{{$consumerCur->name_consumer}}">
       </div>
     </div>
     <div class="form-group row">  
-      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Код РЕМ</label>
+      <label for="lgFormGroupSelect" class="col-sm-2 col-form-label col-form-label-lg">Код РЕМ</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="kod_rem" value="{{$consumer->kod_rem}}">
+        <select name="rem_id" id="consumer-rem_id" class="form-control" id="lgFormGroupSelect">
+                                   
+                                     <option value="{{ $consumerCur->rem_id }}">{{ $rems->slice(1, 1)}}</option>
+
+                                    @foreach($rems as $rem)
+                                     <option value="{{ $rem->id }}">{{ $rem->kod_rem}} {{ $rem->name_rem}}</option>
+                                    @endforeach
+                                   
+                                </select>
+        <!--<input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="rem_id" value="{{$consumerCur->rem_id}}">-->
       </div>
     </div>
     <div class="form-group row">  
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Код галузі</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="kod_otr" value="{{$consumer->kod_otr}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="otr_id" value="{{$consumerCur->otr_id}}">
       </div>
     </div>
-    <div class="form-group row">  
-      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Код підгалузі</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="kod_podotr" value="{{$consumer->kod_podotr}}">
-      </div>
-    </div>   
     <div class="form-group row">
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Зберегти</button>

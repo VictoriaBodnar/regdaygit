@@ -30,24 +30,29 @@
                             </div>
                         </div>  
                         <div class="form-group">
-                            <label for="consumer-kod_rem" class="col-sm-6 control-label">Код РЕМ</label>
+                            <label for="consumer-rem_id" class="col-sm-6 control-label">Код РЕМ</label>
                             <div class="col-sm-6">
-                                <input type="text" name="kod_rem" id="consumer-kod_rem" class="form-control" value="{{ old('consumer') }}">
+                                <select name="rem_id" id="consumer-rem_id" class="form-control">
+                                    @foreach($rems as $rem)
+                                     <option value="{{ $rem->id }}">{{ $rem->kod_rem}} {{ $rem->name_rem}}</option>
+                                    @endforeach
+                                </select>
+                                <!--<input type="text" name="kod_rem" id="consumer-kod_rem" class="form-control" value="{{ old('consumer') }}">--> 
                             </div>
                         </div>      
                         <div class="form-group">
-                            <label for="consumer-kod_otr" class="col-sm-6 control-label">Код галузі</label>
+                            <label for="consumer-otr_id" class="col-sm-6 control-label">Код галузі</label>
                             <div class="col-sm-6">
-                                <input type="text" name="kod_otr" id="consumer-kod_otr" class="form-control" value="{{ old('consumer') }}">
+                                <select name="otr_id" id="consumer-otr_id" class="form-control">
+                                    <option value=""></option>
+                                    @foreach($otrs as $otr)
+                                     <option value="{{ $otr->id }}">{{ $otr->kod_otr}} -  {{ $otr->kod_podotr}} {{ $otr->name_otr}}</option>
+                                    @endforeach
+                                </select>
+                                <!--<input type="text" name="kod_otr" id="consumer-kod_otr" class="form-control" value="{{ old('consumer') }}">-->
                             </div>
                         </div> 
-                        <div class="form-group">
-                            <label for="consumer-kod_podotr" class="col-sm-6 control-label">Код підгалузі</label>
-                            <div class="col-sm-6">
-                                <input type="text" name="kod_podotr" id="consumer-kod_podotr" class="form-control" value="{{ old('consumer') }}">
-                            </div>
-                        </div>       
-
+                        
 
                         <!-- Add Task Button -->
                         <div class="form-group">
@@ -80,17 +85,19 @@
                                 <th>Назва</th>
                                 <th>Код РЕМ</th>
                                 <th>Код галузі</th>
-                                <th>Код підгалузі</th>
+                                <th>Ким внесено</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
+                                
                                 @foreach ($consumers as $consumer)
                                     <tr>
                                         <td class="table-text"><div>{{ $consumer->kod_consumer }}</div></td>
                                         <td class="table-text"><div>{{ $consumer->name_consumer }}</div></td>
-                                        <td class="table-text"><div>{{ $consumer->kod_rem }}</div></td>
-                                        <td class="table-text"><div>{{ $consumer->kod_otr }}</div></td>
-                                        <td class="table-text"><div>{{ $consumer->kod_podotr }}</div></td>
+                                        <td class="table-text"><div><option value="{{ $consumer->rem_id }}">{{ $consumer->kod_rem_name_rem }}</option></div></td>
+                                        <td class="table-text"><div><option value="{{ $consumer->otr_id }}">{{ $consumer->kod_otr }} - {{ $consumer->kod_podotr }} {{ $consumer->name_otr }}</option></div></td>
+                                        <td class="table-text"><div>{{ $consumer->u_name }}</div></td>
+
 
                                         <!-- Task Delete Button -->
                                         <td>

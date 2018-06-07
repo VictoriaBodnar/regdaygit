@@ -77,7 +77,7 @@ class RemController extends Controller
             $rem->kod_seti = $request->kod_seti;
             $rem->user_id = Auth::user()->id;
             $rem->save();
-            $rem->save();
+        
             
     
             //return redirect('/rems_list')->with('success', 'Company added.');

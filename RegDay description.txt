@@ -83,6 +83,8 @@ Model created successfully.
 C:\wamp64\regday>php artisan make:controller RemController --resource
 Controller created successfully.
 
+--В файле маршрутов web.php прописываем маршрут Route::resource('rems', 'RemController');
+
 *****************************************************************************
 Таблица otrs (& CRUD)
 *****************************************************************************
