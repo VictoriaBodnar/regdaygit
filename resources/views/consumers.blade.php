@@ -33,6 +33,7 @@
                             <label for="consumer-rem_id" class="col-sm-6 control-label">Код РЕМ</label>
                             <div class="col-sm-6">
                                 <select name="rem_id" id="consumer-rem_id" class="form-control">
+                                    <option value=""></option>
                                     @foreach($rems as $rem)
                                      <option value="{{ $rem->id }}">{{ $rem->kod_rem}} {{ $rem->name_rem}}</option>
                                     @endforeach

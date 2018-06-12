@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Type;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class TypeController extends Controller
 {
@@ -11,9 +14,22 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+  {
+    $this->middleware('auth');
+
+    //$this->middleware('log')->only('index');
+
+    //$this->middleware('subscribed')->except('store');
+  }
+
     public function index()
     {
-        //
+        $types = Type::orderBy('created_at', 'asc')->get();
+
+        return view('types', [
+          'types' => $types
+        ]);
     }
 
     /**
@@ -34,7 +50,27 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            
+            'name_type' => 'required|max:5',  
+            'primitka' => 'required|max:255'
+           );
+           $validator = Validator::make($request->all(), $rules);
+           
+
+            if ($validator->fails()) {
+              return redirect('/types')
+                ->withInput()
+                ->withErrors($validator);
+            }
+
+            $type = new Type;
+            $type->name_type = $request->name_type;
+            $type->primitka = $request->primitka;
+            $type->user_id = Auth::user()->id;
+            $type->save();
+           
+            return redirect('/types')->with('alert', 'Додано!');;
     }
 
     /**
@@ -56,7 +92,9 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        //
+       $type = Type::find($id);
+       return view('editTypes',compact('type','id'));
+       //return ('edit method runs!');
     }
 
     /**

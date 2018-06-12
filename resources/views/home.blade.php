@@ -9,7 +9,6 @@
                 <div class="panel-heading"><a href="{{ url('/rems') }}">Довідник РЕМів</a></div>
                 <div class="panel-heading"><a href="{{ url('/otrs') }}">Довідник галузей</a></div>
                 <div class="panel-heading"><a href="{{ url('/pasps') }}">Паспорт задачі</a></div>
-                <div class="panel-heading"><a href="{{ url('/seties') }}">Вид мережі</a></div>
                 <div class="panel-heading"><a href="{{ url('/types') }}">Тип виміру</a></div>
                 
                <!-- <div class="panel-body">

@@ -103,7 +103,6 @@ class RemController extends Controller
      */
     public function edit($id)
     {
-
        
        $rem = Rem::find($id);
        return view('editRems',compact('rem','id'));

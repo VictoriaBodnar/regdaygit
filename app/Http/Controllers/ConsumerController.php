@@ -100,28 +100,9 @@ class ConsumerController extends Controller
     {
 
        $consumerCur = Consumer::find($id);
-       $remCur = Rem::find($consumerCur->rem_id);
        $rems = DB::table('rems')->get();
-       return view('editConsumers',compact('consumerCur','id','remCur', 'rems'));
-       //return ('edit method runs!');
-       /*$rems = DB::table('rems')->get();
        $otrs = DB::table('otrs')->get();
-       $consumer = DB::select("SELECT c.id id, c.kod_consumer, c.name_consumer, c.kod_grp, c.kod_seti, c.rem_id, c.otr_id, c.user_id, c.created_at,  c.updated_at,
-                             u.name u_name, u.email u_email, r.kod_rem r_kod_rem, r.name_rem r_name_rem, concat(r.kod_rem,'   ',r.name_rem) kod_rem_name_rem,
-                             o.kod_otr,o.kod_podotr, o.name_otr
-                             FROM consumers c
-                             LEFT JOIN  users u on c.user_id = u.id
-                             LEFT JOIN  rems r on c.rem_id = r.id
-                             LEFT JOIN  otrs o on c.otr_id = o.id
-                             WHERE c.id={$id}
-                             Order by c.created_at asc");
-
-    return view('editConsumers', [
-      'consumer' => $consumer,      
-      'rems' => $rems,
-      'otrs' => $otrs
-    ]);*/
-
+       return view('editConsumers',compact('consumerCur','id','rems', 'otrs'));
     }
 
     /**

@@ -106,7 +106,17 @@ Controller created successfully.
 *****************************************************************************
 
 
+Database: Seeding
 
+php artisan make:seeder UsersTableSeeder
+
+DatabaseSeeder.php -> UsersTableSeeder.php -> ModelFactory.php
+
+php artisan db:seed 			    // выполнит общий файл DatabaseSeeder.php
+
+php artisan db:seed --class=RemsTableSeeder // выполнит файл отдельной таблицы RemsTableSeeder.php
+
+php artisan migrate:refresh --seed 	    // откат и повторное выполнение миграций + заполнение данными
 
 
 
