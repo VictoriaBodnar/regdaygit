@@ -44,7 +44,7 @@ class RemsTableSeeder extends Seeder
 							array(1535,	15,	'Ямпольский    РЭС/ВВПЭС'));
 
 
-    	 foreach($RasArr as $key => $v) {
+    	foreach($RasArr as $key => $v) {
 			        
 			        DB::table('rems')->insert([
 			            'kod_rem' => $v[0],
