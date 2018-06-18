@@ -1,4 +1,19 @@
-﻿PROJECT RegDay
+﻿git status 
+
+git add .
+
+git status
+
+git commit -m "comments"
+
+git push -u regdaygit master
+
+
+Накатить из уд.реп git pull regdaygit
+
+
+-----------------------------------------------------------------------------
+PROJECT RegDay
 
 check_consumer		-	
 zam_consumer		-	consumers

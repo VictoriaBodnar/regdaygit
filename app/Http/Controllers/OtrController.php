@@ -80,7 +80,7 @@ class OtrController extends Controller
             
     
             //return redirect('/rems_list')->with('success', 'Company added.');
-            return redirect('/otrs')->with('alert', 'Додано!');;
+            return redirect('/otrs')->with('alert', 'Додано!');
     }
 
     /**

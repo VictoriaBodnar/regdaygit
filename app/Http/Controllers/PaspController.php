@@ -3,9 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pasp;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PaspController extends Controller
 {
+     /**
+   * Only authorized user can act this methods
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+
+    //$this->middleware('log')->only('index');
+
+    //$this->middleware('subscribed')->except('store');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +29,11 @@ class PaspController extends Controller
      */
     public function index()
     {
-        //
+        $pasps = Pasp::orderBy('created_at', 'asc')->get();
+
+        return view('pasps', [
+          'pasps' => $pasps
+        ]);
     }
 
     /**
@@ -34,7 +54,28 @@ class PaspController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$rules = array(
+            
+            'date_zamer' => 'required|date????' 
+            
+           );
+            $validator = Validator::make($request->all(), $rules);
+           
+
+            if ($validator->fails()) {
+              return redirect('/pasps')
+                ->withInput()
+                ->withErrors($validator);
+            }*/
+
+            $pasp = new Pasp;
+            $pasp->date_zamer = $request->date_zamer;
+            $pasp->user_id = Auth::user()->id;
+            $pasp->save();
+            
+      
+               
+            return redirect('/pasps')->with('alert', 'Додано!');
     }
 
     /**
@@ -56,7 +97,10 @@ class PaspController extends Controller
      */
     public function edit($id)
     {
-        //
+          
+       $pasp = Pasp::find($id);
+       //return view('editPasps',compact('pasp','id'));
+       return ('edit method runs!');
     }
 
     /**
@@ -68,7 +112,11 @@ class PaspController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $pasp = Pasp::find($id); // Retrieve a model by its primary key...
+        $pasp->date_zamer = $request->get('date_zamer');
+        $pasp->user_id = Auth::user()->id;
+        $pasp->save();
+        return redirect('/pasps')->with('alert', 'Запис збережено!');
     }
 
     /**
