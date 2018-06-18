@@ -54,9 +54,9 @@ class PaspController extends Controller
      */
     public function store(Request $request)
     {
-        /*$rules = array(
+        $rules = array(
             
-            'date_zamer' => 'required|date????' 
+            'date_zamer' => 'required|date' 
             
            );
             $validator = Validator::make($request->all(), $rules);
@@ -66,7 +66,7 @@ class PaspController extends Controller
               return redirect('/pasps')
                 ->withInput()
                 ->withErrors($validator);
-            }*/
+            }
 
             $pasp = new Pasp;
             $pasp->date_zamer = $request->date_zamer;
@@ -99,8 +99,8 @@ class PaspController extends Controller
     {
           
        $pasp = Pasp::find($id);
-       //return view('editPasps',compact('pasp','id'));
-       return ('edit method runs!');
+       return view('editPasps',compact('pasp','id'));
+       //return ('edit method runs!');
     }
 
     /**
