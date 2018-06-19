@@ -59,7 +59,7 @@ class ConsumerController extends Controller
   {
 		   $rules = array(
             
-        'kod_consumer' => 'required|max:5',  
+        'kod_consumer' => 'required|numeric',  
 		    'name_consumer' => 'required|max:255',
 		    'rem_id' => 'required|numeric',
 		    'otr_id' => 'required|numeric'
@@ -115,7 +115,23 @@ class ConsumerController extends Controller
   
   public function update(Request $request, $id)
     {
-        //return ('update method runs!'.$id);      
+        //return ('update method runs!'.$id);
+        $rules = array(
+            
+        'kod_consumer' => 'required|numeric',  
+        'name_consumer' => 'required|max:255',
+        'rem_id' => 'required|numeric',
+        'otr_id' => 'required|numeric'
+         );
+        $validator = Validator::make($request->all(), $rules);
+       
+
+        if ($validator->fails()) {
+          return redirect('/consumer_edit/'.$id)
+            ->withInput()
+            ->withErrors($validator);
+        }
+
         $consumer = Consumer::find($id); // Retrieve a model by its primary key...
         $consumer->kod_consumer = $request->get('kod_consumer');
         $consumer->name_consumer = $request->get('name_consumer');

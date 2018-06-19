@@ -72,7 +72,7 @@
 
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="{{ url('type_del/'.$type->id) }}" method="POST">
+                                            <form action="{{ url('types/'.$type->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -82,7 +82,7 @@
                                             </form>
                                         </td>
                                         <td>    
-                                           <a class="btn btn-primary" href="{{ url('type_edit/'.$type->id) }}">Редагувати</a>
+                                           <a class="btn btn-primary" href="{{ route('types.edit',$type->id) }}">Редагувати</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -58,7 +58,7 @@ class RemController extends Controller
     {
             $rules = array(
             
-            'kod_rem' => 'required|max:5',  
+            'kod_rem' =>  'required|numeric',  
             'name_rem' => 'required|max:255',
             'kod_seti' => 'required|numeric'
            );
@@ -119,7 +119,17 @@ class RemController extends Controller
     public function update(Request $request, $id)
     {
         
-        
+        $rules = array(            
+            'kod_rem'  =>  'required|numeric',  
+            'name_rem' => 'required|max:255',
+            'kod_seti' => 'required|numeric'
+        );
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+              return redirect('/rems/'.$id.'/edit')
+                ->withInput()
+                ->withErrors($validator);
+        }
         $rem = Rem::find($id); // Retrieve a model by its primary key...
         $rem->kod_rem = $request->get('kod_rem');
         $rem->name_rem = $request->get('name_rem');

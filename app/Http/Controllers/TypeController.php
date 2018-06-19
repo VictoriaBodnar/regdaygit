@@ -92,6 +92,7 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
+        
        $type = Type::find($id);
        return view('editTypes',compact('type','id'));
        //return ('edit method runs!');
@@ -106,7 +107,28 @@ class TypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            
+            'name_type' => 'required|max:5',  
+            'primitka' => 'required|max:255'
+           );
+           $validator = Validator::make($request->all(), $rules);
+           
+
+            if ($validator->fails()) {
+              return redirect('/types/'.$id.'/edit')
+                ->withInput()
+                ->withErrors($validator);
+            }
+            $type = Type::find($id); // Retrieve a model by its primary key...
+            $type->name_type = $request->get('name_type');
+            $type->primitka = $request->get('primitka');
+            $type->user_id = Auth::user()->id;
+            $type->save();
+            return redirect('/types')->with('alert', 'Запис збережено!');
+
+
+
     }
 
     /**
@@ -115,8 +137,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect('/types')->with('alert', 'Вилучено!');
     }
 }

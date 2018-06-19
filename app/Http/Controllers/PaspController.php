@@ -29,7 +29,7 @@ class PaspController extends Controller
      */
     public function index()
     {
-        $pasps = Pasp::orderBy('created_at', 'asc')->get();
+        $pasps = Pasp::orderBy('date_zamer', 'desc')->get();
 
         return view('pasps', [
           'pasps' => $pasps
@@ -112,7 +112,30 @@ class PaspController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $pasp = Pasp::find($id); // Retrieve a model by its primary key...
+        
+        $rules = array(
+            
+            'date_zamer' => 'bail|required|date'             
+           );
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+               return redirect('/pasps/'.$id.'/edit')
+                    ->withInput()
+                    ->withErrors($validator);
+            }
+           
+           /* if ($validator->fails()) {
+                $pasp = Pasp::find($id);
+                return view('editPasps',compact('pasp','id'))
+                ->withInput()
+                ->withErrors($validator);
+              return redirect('/editPasps')
+                ->withInput()
+                ->withErrors($validator);
+              // return ('validation error!');
+              // return ($request-);
+            }*/
+        $pasp = Pasp::find($id); //Retrieve a model by its primary key...
         $pasp->date_zamer = $request->get('date_zamer');
         $pasp->user_id = Auth::user()->id;
         $pasp->save();

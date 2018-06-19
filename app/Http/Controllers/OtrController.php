@@ -117,7 +117,19 @@ class OtrController extends Controller
      */
     public function update(Request $request, $id)
     {
-         
+        
+         $rules = array(
+            'kod_podotr' => 'required|numeric',  
+            'name_otr' => 'required|max:255',
+            'kod_otr' => 'required|numeric'
+        );
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+               return redirect('/otrs/'.$id.'/edit')
+                    ->withInput()
+                    ->withErrors($validator);
+        }
+
         $otr = Otr::find($id); // Retrieve a model by its primary key...
         $otr->kod_otr = $request->get('kod_otr');
         $otr->name_otr = $request->get('name_otr');

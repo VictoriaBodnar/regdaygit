@@ -114,6 +114,10 @@ use Illuminate\Http\Request;
   Route::resource('otrs', 'OtrController');
   Route::resource('pasps', 'PaspController');
   Route::resource('types', 'TypeController');
-  Route::resource('seties', 'SetiController');
+  
+
+  /*Route::get('/editPasps', function () {
+    return view('editPasps');
+});*/
 
 

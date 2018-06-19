@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+   <!-- Display Validation Errors -->
+  @include('common.errors')
   <form method="post" action="{{action('TypeController@update', $id)}}">
     <div class="form-group row">
       {{csrf_field()}}
