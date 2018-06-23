@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-0 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     New Consumer
@@ -57,7 +57,7 @@
 
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-0 col-sm-6">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-btn fa-plus"></i>Add Consumer
                                 </button>
@@ -101,7 +101,7 @@
 
 
                                         <!-- Task Delete Button -->
-                                        <td>
+                                        <td><div>
                                             <form action="{{ url('consumer_del/'.$consumer->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -110,8 +110,8 @@
                                                     <i class="fa fa-btn fa-trash"></i>Вилучити
                                                 </button>
                                             </form>
-                                        </td>
-                                        <td>    
+                                        </div></td>
+                                        <td><div>    
                                            <a class="btn btn-primary" href="{{ url('consumer_edit/'.$consumer->id) }}">Редагувати</a>
                                         </td>
                                     </tr>

@@ -137,6 +137,8 @@ php artisan migrate:refresh --seed 	    // откат и повторное вы
 
 php artisan migrate:reset //The migrate:reset command will roll back all of your application's migrations:
 
+php artisan migrate:rollback --step=2 // This command will roll back two last files of migrations (in order by name files)
+
 
 
 

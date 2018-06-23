@@ -113,28 +113,16 @@ class PaspController extends Controller
     public function update(Request $request, $id)
     {
         
-        $rules = array(
-            
+        $rules = array(            
             'date_zamer' => 'bail|required|date'             
-           );
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
+        );
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
                return redirect('/pasps/'.$id.'/edit')
                     ->withInput()
                     ->withErrors($validator);
-            }
-           
-           /* if ($validator->fails()) {
-                $pasp = Pasp::find($id);
-                return view('editPasps',compact('pasp','id'))
-                ->withInput()
-                ->withErrors($validator);
-              return redirect('/editPasps')
-                ->withInput()
-                ->withErrors($validator);
-              // return ('validation error!');
-              // return ($request-);
-            }*/
+        }
+                  
         $pasp = Pasp::find($id); //Retrieve a model by its primary key...
         $pasp->date_zamer = $request->get('date_zamer');
         $pasp->user_id = Auth::user()->id;

@@ -50,6 +50,12 @@ class CreateGrafsTable extends Migration
             $table->foreign('kod_consumer')
                   ->references('kod_consumer')->on('consumers')
                   ->onDelete('restrict');
+            /*$table->foreign('date_zamer')
+                  ->references('date_zamer')->on('pasps')
+                  ->onDelete('restrict');  
+            $table->foreign('type_zamer')
+                  ->references('name_type')->on('types')
+                  ->onDelete('restrict'); */           
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('restrict'); 

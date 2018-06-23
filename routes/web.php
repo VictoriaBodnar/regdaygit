@@ -91,23 +91,15 @@ use Illuminate\Http\Request;
 
   Route::resource('rems', 'RemController');
   /*Один этот вызов создаёт множество маршрутов для обработки различных действий для ресурса. 
-  Тип     URI                     Действие  Имя маршрута
-  GET     /photos                 index     photo.index
-  GET     /photos/create          create    photo.create
-  POST    /photos                 store     photo.store
-  GET     /photos/{photo}         show      photo.show
-  GET     /photos/{photo}/edit    edit      photo.edit
-  PUT     /PATCH /photos/{photo}  update    photo.update
-  DELETE  /photos/{photo}         destroy   photo.destroy*/
-
+ 
 /*Тип     URI                     Действие  Имя маршрута
-  GET     /rems                   index     rem.index
-  GET     /rems/create            create    rem.create
-  POST    /rems                   store     rem.store
-  GET     /rems/{rem}             show      rem.show
-  GET     /rems/{rem}/edit        edit      rem.edit
-  PUT     /PATCH /rems/{rem}      update    rem.update
-  DELETE  /rems/{rem}             destroy   rem.destroy*/
+  GET     /rems                   index     rems.index
+  GET     /rems/create            create    rems.create
+  POST    /rems                   store     rems.store
+  GET     /rems/{rem}             show      rems.show
+  GET     /rems/{rem}/edit        edit      rems.edit
+  PUT     /PATCH /rems/{rem}      update    rems.update
+  DELETE  /rems/{rem}             destroy   rems.destroy*/
 
 
 
@@ -119,5 +111,9 @@ use Illuminate\Http\Request;
   /*Route::get('/editPasps', function () {
     return view('editPasps');
 });*/
+
+Route::get('import-export-csv-excel',array('as'=>'excel.import','uses'=>'FileController@importExportExcelORCSV'));
+Route::post('import-csv-excel',array('as'=>'import-csv-excel','uses'=>'FileController@importFileIntoDB'));
+Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'FileController@downloadExcelFile'));
 
 

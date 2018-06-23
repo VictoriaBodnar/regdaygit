@@ -12,6 +12,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--<style>
+    .form-horizontal .control-label {
+       text-align: left;
+    }
+    div .col-sm-6 {
+       text-align: left;
+    }
+    </style>-->
 
 </head>
 <body>
