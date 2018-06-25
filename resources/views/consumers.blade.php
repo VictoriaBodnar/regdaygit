@@ -18,19 +18,19 @@
 
                         <!-- Task Name -->
                         <div class="form-group">
-                            <label for="consumer-kod_consumer" class="col-sm-6 control-label">Код</label>
+                            <label for="consumer-kod_consumer" class="col-sm-1 control-label">Код</label>
                             <div class="col-sm-6">
                                 <input type="text" name="kod_consumer" id="consumer-kod_consumer" class="form-control" value="{{ old('consumer') }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="consumer-name_consumer" class="col-sm-6 control-label">Назва</label>
+                            <label for="consumer-name_consumer" class="col-sm-1 control-label">Назва</label>
                             <div class="col-sm-6">
                                 <input type="text" name="name_consumer" id="consumer-name_consumer" class="form-control" value="{{ old('consumer') }}">
                             </div>
                         </div>  
                         <div class="form-group">
-                            <label for="consumer-rem_id" class="col-sm-6 control-label">Код РЕМ</label>
+                            <label for="consumer-rem_id" class="col-sm-1 control-label">Код РЕМ</label>
                             <div class="col-sm-6">
                                 <select name="rem_id" id="consumer-rem_id" class="form-control">
                                     <option value=""></option>
@@ -42,7 +42,7 @@
                             </div>
                         </div>      
                         <div class="form-group">
-                            <label for="consumer-otr_id" class="col-sm-6 control-label">Код галузі</label>
+                            <label for="consumer-otr_id" class="col-sm-1 control-label">Код галузі</label>
                             <div class="col-sm-6">
                                 <select name="otr_id" id="consumer-otr_id" class="form-control">
                                     <option value=""></option>
@@ -57,7 +57,7 @@
 
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-0 col-sm-6">
+                            <div class="col-sm-offset-0 col-sm-1">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-btn fa-plus"></i>Add Consumer
                                 </button>
@@ -108,7 +108,7 @@
 
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Вилучити
-                                                </button>
+                                                </button>                                                
                                             </form>
                                         </div></td>
                                         <td><div>    

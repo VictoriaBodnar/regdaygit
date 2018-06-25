@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             html, body {
@@ -72,7 +72,7 @@
           }
         </style>
         <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -164,7 +164,7 @@
                 <div class="links">
                     <a href="https://laravel.com/docs">Режимні виміри за період</a>
                     <a href="/home">Довідники</a>
-                    <a href="https://laravel-news.com">Завантаження даних</a>
+                    <a href="/import-export-csv-excel">Завантаження даних</a>
                     <a href="https://forge.laravel.com">Експорт макету</a>
                     <a href="https://github.com/laravel/laravel">Інструкція</a>
                 </div>
