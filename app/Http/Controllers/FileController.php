@@ -22,46 +22,46 @@ class FileController extends Controller
         return view('file_import_export');
     }
     public function checkFile($data){
+        $i=1;
         foreach ($data as $key => $value) {
+
             
-            $paspsRow = \DB::table('pasps')->where('date_zamer', '2003-12-17')->first();//$value->date_zamer
-            // if ($paspsRow) {return $paspsRow->date_zamer;} else {return "undefined date_zamer";}
-            if (!$paspsRow) return "undefined date_zamer";
+            //we check date_zamer and type_zamer only in the first row. We'll be using them for all rows
+            if ($i==1){
 
-            $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
-            if (!$typesRow) return "undefined type_zamer  ".$value->type_zamer;
+                $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
+                if (!$paspsRow) return "Undefined date_zamer:  ".$value->date_zamer;//"undefined date_zamer"
 
-            $pos = strpos($value->a2, ".");
-            if ($pos === false) {
-            } else {
-                return "!!!!!!!!!!!!!!!!!period found!!!!!!!!!!!!!!!!!!!!!!".$value->a2;
+                $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
+                if (!$typesRow) return "Undefined type_zamer:  ".$value->type_zamer;
             }
-
-            $a2 = preg_replace("/[^0-9]/", "", $value->a2 );
-            if (is_numeric($a2)) {
-                    if (ctype_digit($a2)) {
-                        return "!!!!!!!!!!!ЦЕЛОЕЧисло!!!!!!!!!!!!!!!!!!!!!!!!!!!!".$a2;
-                    }else{
-                        return "!!!!!!!!!!!НЕ целоеЧисло!!!!!!!!!!!!!!!!!!!!!!!!!!!!".$value->a2;
-                    }
-        return "!!!!!!!!!!!Число!!!!!!!!!!!!!!!!!!!!!!!!!!!!".$value->a2;
-    } else {
-        return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    }
-           
+            
+            //check kod_consumer for each row of the uploading file. It must be in consumers table.
+            $consumersRow = \DB::table('consumers')->where('kod_consumer', $value->kod_consumer)->first();//
+            if (!$consumersRow) return "Undefined kod_consumer:  ".$value->kod_consumer;
+            
+            $a2 = $value->a2;    
+            $pos = strpos($a2, ".");
+            if (!$pos === false) {
+                return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$a2." in row ".$i;
+            }
+            if (!is_numeric($a2)) {
+                return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$a2." in row ".$i;
+            }
+              
+               
             return $value->a1."__*". $value->a2."*__". $value->a3."__".$value->a4."__".$value->a5."__".$value->a6."__".$value->a7."__"; 
             
 
 
             //var_dump($user->name);
             //\DB::table('pasps')->select();
-      
-        
-
-        //return "OK";
-        return "NO error in file!!!";
+             
+        $i++;
         }
+        return "Uploading file is OK";
     }    
+    
     public function importFileIntoDB(Request $request){
         /*if($request->hasFile('sample_file_graf')){
              return "yes i have a file";
