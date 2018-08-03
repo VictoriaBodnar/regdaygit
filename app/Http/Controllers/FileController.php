@@ -23,10 +23,11 @@ class FileController extends Controller
     }
     public function checkFile($data){
         $i=1;
+        $checkSumFile = 0;
         foreach ($data as $key => $value) {
 
-            
-            //we check date_zamer and type_zamer only in the first row. We'll be using them for all rows
+            $onlyKodConsumer[] = $value->kod_consumer;
+            //check date_zamer and type_zamer only in the first row. We'll be using them for all rows
             if ($i==1){
 
                 $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
@@ -39,27 +40,44 @@ class FileController extends Controller
             //check kod_consumer for each row of the uploading file. It must be in consumers table.
             $consumersRow = \DB::table('consumers')->where('kod_consumer', $value->kod_consumer)->first();//
             if (!$consumersRow) return "Undefined kod_consumer:  ".$value->kod_consumer;
-            
-            $a2 = $value->a2;    
-            $pos = strpos($a2, ".");
-            if (!$pos === false) {
-                return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$a2." in row ".$i;
-            }
-            if (!is_numeric($a2)) {
-                return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$a2." in row ".$i;
-            }
-              
-               
-            return $value->a1."__*". $value->a2."*__". $value->a3."__".$value->a4."__".$value->a5."__".$value->a6."__".$value->a7."__"; 
-            
 
 
-            //var_dump($user->name);
-            //\DB::table('pasps')->select();
-             
+            //check if value of measure is NUMERIC and INTEGER 
+            $listVal =array('a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12','a13','a14','a15','a16','a17','a18','a19','a20','a21','a22','a23','a24','a_cyt');
+            $checkSumCyt = 0;
+            foreach ($listVal as $k => $v) {
+                $vv = $value->$v; 
+                $pos = strpos($vv, ".");
+                $num_r_for_message=$i+1;
+                if (!$pos === false) {
+                    return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
+                }
+                if (!is_numeric($vv)) {
+                    return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
+                }
+                if ($v=='a_cyt'){
+                    if ($checkSumCyt!=$vv) { return "!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!".$vv."----------------".$checkSumCyt." in row ".$num_r_for_message;}
+                }else{
+                    $checkSumCyt = $checkSumCyt+$vv;
+                    
+                   
+                    //$checkSumFile=$checkSumFile+$checkSumCyt;
+                }  
+
+            }
+            $checkSumFile+=$checkSumCyt; 
+            //echo "checkSumCyt = ".$checkSumCyt."<br>";
+                                     
         $i++;
         }
-        return "Uploading file is OK";
+        //check uniqueness kod_consumer of the uploading file.
+        if (count($onlyKodConsumer)!=count(array_unique($onlyKodConsumer))) {
+            return "kod_consumer is not unique in uploading file";
+        }
+        //echo '<pre>',print_r($onlyKodConsumer,true),'</pre>';
+        //echo '<pre>',$c1,'*************************',$c2,'</pre>';
+        echo "checkSumFile = ".$checkSumFile."<br>";
+        return "Uploading file is OK ";
     }    
     
     public function importFileIntoDB(Request $request){
