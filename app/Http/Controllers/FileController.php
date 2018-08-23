@@ -19,68 +19,10 @@ class FileController extends Controller
     //$this->middleware('subscribed')->except('store');
   }
     public function importExportExcelORCSV(){
-        return view('file_import_export');
+        //return view('file_import_export');
+         return view('file_import_export', ['data' => [], 'message' => '']);
     }
-    public function checkFile($data){
-        $i=1;
-        $checkSumFile = 0;
-        foreach ($data as $key => $value) {
-
-            $onlyKodConsumer[] = $value->kod_consumer;
-            //check date_zamer and type_zamer only in the first row. We'll be using them for all rows
-            if ($i==1){
-
-                $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
-                if (!$paspsRow) return "Undefined date_zamer:  ".$value->date_zamer;//"undefined date_zamer"
-
-                $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
-                if (!$typesRow) return "Undefined type_zamer:  ".$value->type_zamer;
-            }
-            
-            //check kod_consumer for each row of the uploading file. It must be in consumers table.
-            $consumersRow = \DB::table('consumers')->where('kod_consumer', $value->kod_consumer)->first();//
-            if (!$consumersRow) return "Undefined kod_consumer:  ".$value->kod_consumer;
-
-
-            //check if value of measure is NUMERIC and INTEGER 
-            $listVal =array('a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12','a13','a14','a15','a16','a17','a18','a19','a20','a21','a22','a23','a24','a_cyt');
-            $checkSumCyt = 0;
-            foreach ($listVal as $k => $v) {
-                $vv = $value->$v; 
-                $pos = strpos($vv, ".");
-                $num_r_for_message=$i+1;
-                if (!$pos === false) {
-                    return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
-                }
-                if (!is_numeric($vv)) {
-                    return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
-                }
-                if ($v=='a_cyt'){
-                    if ($checkSumCyt!=$vv) { return "!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!".$vv."----------------".$checkSumCyt." in row ".$num_r_for_message;}
-                }else{
-                    $checkSumCyt = $checkSumCyt+$vv;
-                    
-                   
-                    //$checkSumFile=$checkSumFile+$checkSumCyt;
-                }  
-
-            }
-            $checkSumFile+=$checkSumCyt; 
-            //echo "checkSumCyt = ".$checkSumCyt."<br>";
-                                     
-        $i++;
-        }
-        //check uniqueness kod_consumer of the uploading file.
-        if (count($onlyKodConsumer)!=count(array_unique($onlyKodConsumer))) {
-            return "kod_consumer is not unique in uploading file";
-        }
-        //echo '<pre>',print_r($onlyKodConsumer,true),'</pre>';
-        //echo '<pre>',$c1,'*************************',$c2,'</pre>';
-        echo "checkSumFile = ".$checkSumFile."<br>";
-        return "Uploading file is OK ";
-    }    
-    
-    public function importFileIntoDB(Request $request){
+     public function importFileIntoDB(Request $request){
         /*if($request->hasFile('sample_file_graf')){
              return "yes i have a file";
          }
@@ -108,7 +50,72 @@ class FileController extends Controller
             //return $arr[0]['kod_consumer']." ---  ".$arr[0]['type_zamer']."***";
         }
         dd('Request data does not have any files to import.');      
-    } 
+    }
+
+    public function checkFile($data){
+        $i=1;
+        $checkSumFile = 0;
+
+        //return view('file_import_export',['data' => $data]);
+        foreach ($data as $key => $value) {
+            
+            $onlyKodConsumer[] = $value->kod_consumer;
+            //check date_zamer and type_zamer only in the first row. We'll be using them for all rows
+            if ($i==1){
+
+                $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
+                if (!$paspsRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined date_zamer:  '.$value->date_zamer]);
+
+                $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
+                if (!$typesRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined type_zamer:  '.$value->type_zamer]);
+            }
+            
+            //check kod_consumer for each row of the uploading file. It must be in consumers table.
+            $consumersRow = \DB::table('consumers')->where('kod_consumer', $value->kod_consumer)->first();//
+            if (!$consumersRow) return view('file_import_export',['data' => $data, 'message' => 'Undefined kod_consumer:  '.$value->kod_consumer]);
+
+
+            //check if value of measure is NUMERIC and INTEGER 
+            $listVal =array('a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12','a13','a14','a15','a16','a17','a18','a19','a20','a21','a22','a23','a24','a_cyt');
+            $checkSumCyt = 0;
+            foreach ($listVal as $k => $v) {
+                $vv = $value->$v; 
+                $pos = strpos($vv, ".");
+                $num_r_for_message=$i+1;
+                if (!$pos === false) {
+                    //return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
+                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message]);
+                }
+                if (!is_numeric($vv)) {
+                    //return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
+                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message]);
+                }
+                if ($v=='a_cyt'){
+                    if ($checkSumCyt!=$vv) { return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$vv.'----------------'.$checkSumCyt.' in row '.$num_r_for_message]);} //return "!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!".$vv."----------------".$checkSumCyt." in row ".$num_r_for_message;}
+                }else{
+                    $checkSumCyt = $checkSumCyt+$vv;
+                    
+                   
+                    //$checkSumFile=$checkSumFile+$checkSumCyt;
+                }  
+
+            }
+            $checkSumFile+=$checkSumCyt; 
+            //echo "checkSumCyt = ".$checkSumCyt."<br>";
+                                     
+        $i++;
+        }
+        //check uniqueness kod_consumer of the uploading file.
+        if (count($onlyKodConsumer)!=count(array_unique($onlyKodConsumer))) {
+            return "kod_consumer is not unique in uploading file";
+        }
+        //echo '<pre>',print_r($onlyKodConsumer,true),'</pre>';
+        //echo '<pre>',$c1,'*************************',$c2,'</pre>';
+        echo "checkSumFile = ".$checkSumFile."<br>";
+        return "Uploading file is OK ";
+    }    
+    
+   
     public function downloadExcelFile($type){
         $grafs = Graf::get()->toArray();
         return \Excel::create('graf_export', function($excel) use ($grafs) {
