@@ -35,7 +35,9 @@
        
      <!--</div>-->
 {{$message}}
+
 </div>
+
 @if (count($data) > 0)
                 <div class="panel panel-default">
                       <div class="panel-body">
@@ -48,9 +50,12 @@
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                
                                 @foreach ($data as $rw)
-                                    <tr>
+                                    @if ($rw['kod_consumer']==$errRow)
+                                      <tr style="background-color:lightblue">
+                                    @else  
+                                      <tr>
+                                    @endif  
                                       <td class="table-text"><div>{{ $rw['kod_consumer'] }}</div></td>
                                       <td class="table-text"><div>{{ $rw['date_zamer'] }}</div></td>
                                       <td class="table-text"><div>{{ $rw['type_zamer'] }}</div></td>

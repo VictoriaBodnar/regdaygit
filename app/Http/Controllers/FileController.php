@@ -31,7 +31,20 @@ class FileController extends Controller
 
         if($request->hasFile('file_for_upload')){
             $path = $request->file('file_for_upload')->getRealPath();
-            $data = \Excel::load($path)->get();
+            //$data = \Excel::load($path,null,'UTF-8',false)->get();
+          
+                 /* $data= \Excel::load($path, function($import) {$import->get();}, 'UTF-8');//'ASCII' 'UTF-8'*/
+
+                $data= \Excel::load($path, function($import) {
+                    foreach ($import->get() as $client) {
+                        //$data = $client->kod_consumer;
+                        
+                    }
+                    //$data=$import->get();
+                    //return $data;
+                }, 'UTF-8')->get();//'ASCII' 'UTF-8'
+
+
             if($data->count()){
                 
                 $result_checking=$this->checkFile($data);
@@ -64,15 +77,16 @@ class FileController extends Controller
             if ($i==1){
 
                 $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
-                if (!$paspsRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined date_zamer:  '.$value->date_zamer]);
+                if (!$paspsRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined date_zamer:  '.$value->date_zamer, 'errRow' => $value->kod_consumer]);
 
                 $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
-                if (!$typesRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined type_zamer:  '.$value->type_zamer]);
+                return view('file_import_export',['data' => $data, 'message' => 'type_zamer:  '.$value->type_zamer, 'errRow' => $value->kod_consumer]);
+                //if (!$typesRow)  return view('file_import_export',['data' => $data, 'message' => 'Undefined type_zamer:  '.$value->type_zamer, 'errRow' => $value->kod_consumer]);
             }
             
             //check kod_consumer for each row of the uploading file. It must be in consumers table.
             $consumersRow = \DB::table('consumers')->where('kod_consumer', $value->kod_consumer)->first();//
-            if (!$consumersRow) return view('file_import_export',['data' => $data, 'message' => 'Undefined kod_consumer:  '.$value->kod_consumer]);
+            if (!$consumersRow) return view('file_import_export',['data' => $data, 'message' => 'Undefined kod_consumer:  '.$value->kod_consumer, 'errRow' => $value->kod_consumer]);
 
 
             //check if value of measure is NUMERIC and INTEGER 
@@ -84,14 +98,14 @@ class FileController extends Controller
                 $num_r_for_message=$i+1;
                 if (!$pos === false) {
                     //return "!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
-                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message]);
+                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!!!!!!Period found!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message, 'errRow' => $value->kod_consumer]);
                 }
                 if (!is_numeric($vv)) {
                     //return "!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!".$v."=".$vv." in row ".$num_r_for_message;
-                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message]);
+                    return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕЧИСЛО!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$v.'='.$vv.' in row '.$num_r_for_message, 'errRow' => $value->kod_consumer]);
                 }
                 if ($v=='a_cyt'){
-                    if ($checkSumCyt!=$vv) { return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$vv.'----------------'.$checkSumCyt.' in row '.$num_r_for_message]);} //return "!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!".$vv."----------------".$checkSumCyt." in row ".$num_r_for_message;}
+                    if ($checkSumCyt!=$vv) { return view('file_import_export',['data' => $data, 'message' => '!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!'.$vv.'----------------'.$checkSumCyt.' in row '.$num_r_for_message, 'errRow' => $value->kod_consumer]);} //return "!!!!!!!!!!!!НЕВІРНЕ ДОБОВЕ ЗНАЧЕННЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!".$vv."----------------".$checkSumCyt." in row ".$num_r_for_message;}
                 }else{
                     $checkSumCyt = $checkSumCyt+$vv;
                     
@@ -107,7 +121,8 @@ class FileController extends Controller
         }
         //check uniqueness kod_consumer of the uploading file.
         if (count($onlyKodConsumer)!=count(array_unique($onlyKodConsumer))) {
-            return "kod_consumer is not unique in uploading file";
+            //return "kod_consumer is not unique in uploading file";
+            return view('file_import_export',['data' => $data, 'message' => 'kod_consumer is not unique in uploading file:  '.$value->kod_consumer, 'errRow' => $value->kod_consumer]);
         }
         //echo '<pre>',print_r($onlyKodConsumer,true),'</pre>';
         //echo '<pre>',$c1,'*************************',$c2,'</pre>';
