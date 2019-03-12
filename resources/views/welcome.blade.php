@@ -162,7 +162,7 @@
             
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Режимні виміри за період</a>
+                    <a href="/graf/2017-12-20">Режимні виміри за період</a>
                     <a href="/home">Довідники</a>
                     <a href="/import-export-csv-excel">Завантаження даних</a>
                     <a href="https://forge.laravel.com">Експорт макету</a>

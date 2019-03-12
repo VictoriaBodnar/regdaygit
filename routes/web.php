@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 use App\Consumer;
 use Illuminate\Http\Request;
 
@@ -36,6 +38,7 @@ use Illuminate\Http\Request;
   });*/
   //Route::get('/consumer_list', 'ConsumerController@show')->middleware('auth');
   Route::get('/consumer_list', 'ConsumerController@show');
+
 
   /**
    * Добавить нового потребителя
@@ -115,5 +118,8 @@ use Illuminate\Http\Request;
 Route::get('import-export-csv-excel',array('as'=>'excel.import','uses'=>'FileController@importExportExcelORCSV'));
 Route::post('import-csv-excel',array('as'=>'import-csv-excel','uses'=>'FileController@importFileIntoDB'));
 Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'FileController@downloadExcelFile'));
+Route::get('/graf/{graf}', 'GrafController@show');
+Route::post('/graf/{graf}', 'GrafController@show');
+
 
 
