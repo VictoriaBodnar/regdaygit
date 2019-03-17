@@ -29,6 +29,7 @@ class GrafController extends Controller
 
    public function show(Request $request,$date_zamer)
   {
+    return $request;
     //$consumers = Consumer::orderBy('created_at', 'asc')->get();
     //$users = DB::table('users')->get();
     $users = DB::table('users')->get();

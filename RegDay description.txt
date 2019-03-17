@@ -1,4 +1,11 @@
-﻿git status 
+﻿To do list:
+1.to make FileController some clear
+2.Why don't working form on grafs.blade.php
+3.Check out dublicate insert
+4.Function of deleting graf for date.
+FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+git status 
 
 git add .
 

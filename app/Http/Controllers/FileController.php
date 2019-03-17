@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Graf;
+//use App\Graf;
 use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Validator;
 //use Illuminate\Support\Facades\Auth;
 class FileController extends Controller 
@@ -48,24 +48,29 @@ class FileController extends Controller
             if($data->count()){
                 
                 $result_checking=$this->checkFile($data);
+               
                 //return $result_checking;
                 
-                if ($result_checking > 0) { 
+                if ($result_checking['checkSumFile'] > 0) { 
 
-                foreach ($data as $key => $value) {
-                    $arr[] = ['kod_consumer' => $value->kod_consumer, 'date_zamer' => $value->date_zamer, 'type_zamer' => $value->type_zamer, 'a1' => $value->a1, 'a2' => $value->a2, 'a3' => $value->a3, 'a4' => $value->a4, 'a5' => $value->a5, 'a6' => $value->a6, 'a7' => $value->a7, 'a8' => $value->a8, 'a9' => $value->a9, 'a10' => $value->a10, 'a11' => $value->a11, 'a12' => $value->a12, 'a13' => $value->a13, 'a14' => $value->a14, 'a15' => $value->a15, 'a16' => $value->a16, 'a17' => $value->a17, 'a18' => $value->a18, 'a19' => $value->a19, 'a20' => $value->a20, 'a21' => $value->a21, 'a22' => $value->a22, 'a23' => $value->a23, 'a24' => $value->a24, 'a_cyt' => $value->a_cyt, 'user_id' => Auth::user()->id,'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s") ];
-                }
+                    //dd($result_checking['checkSumFile']);
+                   
+                    foreach ($data as $key => $value) {
+                         
+                        $arr[] = ['kod_consumer' => $value->kod_consumer, 'date_zamer' => $value->date_zamer, 'type_zamer' => $value->type_zamer, 'a1' => $value->a1, 'a2' => $value->a2, 'a3' => $value->a3, 'a4' => $value->a4, 'a5' => $value->a5, 'a6' => $value->a6, 'a7' => $value->a7, 'a8' => $value->a8, 'a9' => $value->a9, 'a10' => $value->a10, 'a11' => $value->a11, 'a12' => $value->a12, 'a13' => $value->a13, 'a14' => $value->a14, 'a15' => $value->a15, 'a16' => $value->a16, 'a17' => $value->a17, 'a18' => $value->a18, 'a19' => $value->a19, 'a20' => $value->a20, 'a21' => $value->a21, 'a22' => $value->a22, 'a23' => $value->a23, 'a24' => $value->a24, 'a_cyt' => $value->a_cyt, 'user_id' => Auth::user()->id,'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s") ];
+                    }
 
-                if(!empty($arr)){
-                    \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    \DB::table('grafs')->insert($arr);
-                    //dd('Insert Record successfully.');
-                    
-                    return view('grafs');
-                    //return 'grafs';
-                }
-            }else{
-                return $result_checking;
+                    if(!empty($arr)){
+                        \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        \DB::table('grafs')->insert($arr);
+                        //dd('Insert Record successfully.');
+                        
+                        return redirect('/graf/'.$result_checking['date_zamer'])->with('message', 'Дані успішно внесено! Дата виміру: '.$result_checking['date_zamer'].' Загальна сума: '.$result_checking['checkSumFile'].' кВт');
+                         
+                        
+                    }
+                }else{
+                    return $result_checking;
             }
             }
             //return $arr[0]['kod_consumer']." ---  ".$arr[0]['type_zamer']."***";
@@ -76,6 +81,8 @@ class FileController extends Controller
     public function checkFile($data){
         $i=1;
         $checkSumFile = 0;
+        $dateToReturn = '';
+       
 
         //return view('file_import_export',['data' => $data]);
         foreach ($data as $key => $value) {
@@ -86,6 +93,7 @@ class FileController extends Controller
 
                 $paspsRow = \DB::table('pasps')->where('date_zamer', $value->date_zamer)->first();//'2003-12-17'
                 if (!$paspsRow)  return view('file_import_export',['data' => $data, 'message' => 'Знайдено невідому дату вимірів:  '.$value->date_zamer, 'errRow' => $value->kod_consumer]);
+                 $dateToReturn = $value->date_zamer;   
 
                 $typesRow = \DB::table('types')->where('name_type', $value->type_zamer)->first();
                 //return view('file_import_export',['data' => $data, 'message' => 'type_zamer:  '.$value->type_zamer, 'errRow' => $value->kod_consumer]);
@@ -137,7 +145,8 @@ class FileController extends Controller
         //echo "Завантаження даних успішне. Контрольна сума = ".$checkSumFile."<br>";
         //return "Uploading file is OK ";
         //return view('welcome');
-        return $checkSumFile;
+        $arrToReturn = ['checkSumFile' => $checkSumFile, 'date_zamer' => $dateToReturn];   
+        return  $arrToReturn;
     }    
     
    

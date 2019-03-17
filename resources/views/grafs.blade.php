@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container">
         <div class="col-sm-offset-0 col-sm-12">
             <form action="{{ url('grafs/2017-12-20')}}" method="POST" class="form-horizontal">
@@ -36,6 +37,11 @@
             @if (session('alert'))
                 <div class="alert alert-success" id="success-alert">
                     {{ session('alert') }}
+                </div>
+            @endif
+            @if (session('message'))
+                <div class="msg-insert-data" >
+                    {{ session('message') }}
                 </div>
             @endif
 
