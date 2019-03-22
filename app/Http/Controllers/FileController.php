@@ -61,6 +61,12 @@ class FileController extends Controller
                     }
 
                     if(!empty($arr)){
+                         $grafs = \DB::table('grafs')->where('date_zamer', $value->date_zamer)->first();
+                         if (!empty($grafs)) {
+                            //return "Неможливо внести дані. Виміри за ".$value->date_zamer." вже існують";
+                            return redirect('/graf/'.$result_checking['date_zamer'])->with('error', 'Неможливо внести дані. Виміри за '.$value->date_zamer.' вже існують');
+                         }
+                         
                         \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         \DB::table('grafs')->insert($arr);
                         //dd('Insert Record successfully.');

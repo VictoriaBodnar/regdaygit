@@ -4,7 +4,7 @@
     <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container">
         <div class="col-sm-offset-0 col-sm-12">
-            <form action="{{ url('grafs/2017-12-20')}}" method="POST" class="form-horizontal">
+            <form action="{{ url('graf')}}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -14,10 +14,10 @@
                         <!-- Display Validation Errors -->
                         @include('common.errors')
                         <div class="form-group">
-                            <select name="pasp_id" id="graf-pasp_id" class="form-control">
+                            <select name="date_zamer" id="graf-date_zamer" class="form-control">
                                             <option value=""></option>
                                             @foreach($pasps as $pasp)
-                                             <option value="{{ $pasp->id }}">{{ $pasp->date_zamer}}</option>
+                                             <option value="{{ $pasp->date_zamer }}">{{ $pasp->date_zamer}}</option>
                                             @endforeach
                             </select>
                         </div>    
@@ -44,8 +44,18 @@
                     {{ session('message') }}
                 </div>
             @endif
+             @if (session('error'))
+                <div class="alert alert-danger" >
+                    {{ session('error') }}
+                </div>
+            @endif
 
             <!-- Current Tasks -->
+            @if (count($grafs) == 0)
+                <div class="panel-heading">
+                        Немає даних
+                </div>
+            @endif
             @if (count($grafs) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">

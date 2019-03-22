@@ -27,18 +27,21 @@ class GrafController extends Controller
   }
 
 
-   public function show(Request $request,$date_zamer)
+   public function show(Request $request, $date_zamer = null)
   {
-    return $request;
-    //$consumers = Consumer::orderBy('created_at', 'asc')->get();
-    //$users = DB::table('users')->get();
+        
     $users = DB::table('users')->get();
-   
     $rems = DB::table('rems')->get();
     $otrs = DB::table('otrs')->get();
-    $pasps = DB::table('pasps')->get();   
+    $pasps = DB::table('pasps')->orderBy('id','DESC')->get();   
 
-    //$otrs = DB::select("SELECT * FROM otrs");
+    if ($request->isMethod('post')) { $date_zamer = $request->date_zamer; }
+    
+    if (empty($date_zamer)) {
+        
+        $date_zamer = DB::table('pasps')->max('date_zamer');
+       
+    }
 
     $grafs = DB::select("SELECT g.id, g.kod_consumer, c.name_consumer, g.date_zamer, g.type_zamer, g.a1, g.a2, g.a3, g.a4, g.a5, g.a6, g.a7, g.a8, g.a9, g.a10, g.a11, g.a12, g.a13, g.a14, g.a15, g.a16, g.a17, g.a18, g.a19, g.a20, g.a21, g.a22, g.a23, g.a24, g.a_cyt, g.user_id, g.created_at, g.updated_at,  t.name_type, u.name u_name
       FROM grafs g
@@ -54,9 +57,14 @@ class GrafController extends Controller
       'grafs' => $grafs,
       'pasps' => $pasps
     ]);
-    
+    /*if (empty($grafs)) {
+      $grafs->kod_consumer = "Немає даних";
+      return $grafs->kod_consumer;
+    }else{
+      return $grafs;
+    }*/
 
-    //return "!!!!!!!!!!!!!!!!!GRAF SHOW!!!!!!!!!!!!!!!!!!!!!!";
+    
 
    } 
 
