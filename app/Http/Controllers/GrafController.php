@@ -100,15 +100,7 @@ class GrafController extends Controller
 		  
   } 
 
-  public function delete(Consumer $consumer)
-  {
-
-  	$consumer->delete();
-
-    return redirect('/consumer_list')->with('alert', 'Вилучено!');
-
-  }
-
+  
   public function edit($id)
     {
 
@@ -153,6 +145,15 @@ class GrafController extends Controller
         $consumer->user_id = Auth::user()->id;
         $consumer->save();
         return redirect('/consumer_list')->with('alert', 'Запис збережено!');
+    }
+
+  public function delete(Graf $graf)
+    {
+
+      $graf->delete();
+
+      return redirect('/graf')->with('alert', 'Вилучено!');
+      
     }
 
 }

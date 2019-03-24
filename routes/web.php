@@ -122,6 +122,6 @@ Route::get('/graf/{graf?}', 'GrafController@show');
 Route::post('/graf/{graf?}','GrafController@show');
 //Route::post('/consumer_add', 'ConsumerController@store');
 //Route::get('/graf/', 'GrafController@show');
-
+Route::delete('/graf_del/{graf}','GrafController@delete');
 
 
