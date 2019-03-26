@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Graf;
 use App\Rem;
+use App\Pasp;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,8 @@ class GrafController extends Controller
     $rems = DB::table('rems')->get();
     $otrs = DB::table('otrs')->get();
     $pasps = DB::table('pasps')->orderBy('id','DESC')->get();   
+    //$pasps = Pasp::all();
+
 
     if ($request->isMethod('post')) { $date_zamer = $request->date_zamer; }
     
@@ -104,10 +107,12 @@ class GrafController extends Controller
   public function edit($id)
     {
 
-       $consumerCur = Consumer::find($id);
-       $rems = DB::table('rems')->get();
-       $otrs = DB::table('otrs')->get();
-       return view('editConsumers',compact('consumerCur','id','rems', 'otrs'));
+       $grafCur = Graf::find($id);
+       $consumers = DB::table('consumers')->get();//код споживача
+       $pasps = DB::table('pasps')->get();//дата виміру
+       $types = DB::table('types')->get();//тип виміру
+       return view('editGrafs',compact('grafCur','id','consumers', 'pasps', 'types'));
+       //return 'editGrafs';
     }
 
     /**
