@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 use App\Consumer;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 
   /**
    * Вывести панель с со списком потребителей

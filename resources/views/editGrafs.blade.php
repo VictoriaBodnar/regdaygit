@@ -68,7 +68,7 @@
     <div class="form-group row">  
      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">  a_cyt</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="a_cyt" value="{{$grafCur->a_cyt}}">
+        <input disabled type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="a_cyt" value="{{$grafCur->a_cyt}}">
       </div>
     </div>
     <div class="form-group row">

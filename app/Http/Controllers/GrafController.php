@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Graf;
 use App\Rem;
@@ -9,6 +10,10 @@ use App\Pasp;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ValidSaveGraf;
+
+
+
 
 
 class GrafController extends Controller
@@ -34,15 +39,16 @@ class GrafController extends Controller
     $users = DB::table('users')->get();
     $rems = DB::table('rems')->get();
     $otrs = DB::table('otrs')->get();
-    $pasps = DB::table('pasps')->orderBy('id','DESC')->get();   
-    //$pasps = Pasp::all();
+    //$pasps = DB::table('pasps')->orderBy('id','DESC')->get();   
+    $pasps = Pasp::all();
 
 
     if ($request->isMethod('post')) { $date_zamer = $request->date_zamer; }
     
     if (empty($date_zamer)) {
         
-        $date_zamer = DB::table('pasps')->max('date_zamer');
+        //$date_zamer = DB::table('pasps')->max('date_zamer');
+        $date_zamer = Pasp::all()->max('date_zamer');
        
     }
 
@@ -109,7 +115,8 @@ class GrafController extends Controller
 
        $grafCur = Graf::find($id);
        $consumers = DB::table('consumers')->get();//код споживача
-       $pasps = DB::table('pasps')->get();//дата виміру
+       $pasps = Pasp::all();
+       //$pasps = DB::table('pasps')->get();//дата виміру
        $types = DB::table('types')->get();//тип виміру
        return view('editGrafs',compact('grafCur','id','consumers', 'pasps', 'types'));
        //return 'editGrafs';
@@ -123,34 +130,75 @@ class GrafController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-  public function update(Request $request, $id)
+  public function update(ValidSaveGraf $request, $id)
     {
         //return ('update method runs!'.$id);
-        $rules = array(
-            
+      //------------------------------------------------------------
+       //Validation in this class ValidSaveGraf.php
+       /* $rules = array(
         'kod_consumer' => 'required|numeric',  
-        'name_consumer' => 'required|max:255',
-        'rem_id' => 'required|numeric',
-        'otr_id' => 'required|numeric'
+        'date_zamer' => 'required|date',
+        'type_zamer' => 'required',
+        'a1' => 'required|int'
          );
         $validator = Validator::make($request->all(), $rules);
        
 
         if ($validator->fails()) {
-          return redirect('/consumer_edit/'.$id)
+          return redirect('/graf_edit/'.$id)
             ->withInput()
             ->withErrors($validator);
-        }
+        }*/
+        //------------------------------------------------------------
 
-        $consumer = Consumer::find($id); // Retrieve a model by its primary key...
-        $consumer->kod_consumer = $request->get('kod_consumer');
-        $consumer->name_consumer = $request->get('name_consumer');
-        $consumer->rem_id = $request->get('rem_id');
-        $consumer->otr_id = $request->get('otr_id');
-        $consumer->user_id = Auth::user()->id;
-        $consumer->save();
-        return redirect('/consumer_list')->with('alert', 'Запис збережено!');
+        $graf = Graf::find($id); // Retrieve a model by its primary key...
+        $graf->kod_consumer = $request->get('kod_consumer');
+        $graf->date_zamer = $request->get('date_zamer');
+        $graf->type_zamer = $request->get('type_zamer');
+        /*for($i=1; $i<25; $i++){
+          $graf->a.$i = $request->get('a'.$i);
+          return $graf->a.$i;
+        }*/
+        $graf->a1 = $request->get('a1');
+        $graf->a2 = $request->get('a2');
+        $graf->a3 = $request->get('a3');
+        $graf->a4 = $request->get('a4');
+        $graf->a5 = $request->get('a5');
+        $graf->a6 = $request->get('a6');
+        $graf->a7 = $request->get('a7');
+        $graf->a8 = $request->get('a8');
+        $graf->a9 = $request->get('a9');
+        $graf->a10 = $request->get('a10');
+        $graf->a11 = $request->get('a11');
+        $graf->a12 = $request->get('a12');
+        $graf->a13 = $request->get('a13');
+        $graf->a14 = $request->get('a14');
+        $graf->a15 = $request->get('a15');
+        $graf->a16 = $request->get('a16');
+        $graf->a17 = $request->get('a17');
+        $graf->a18 = $request->get('a18');
+        $graf->a19 = $request->get('a19');
+        $graf->a20 = $request->get('a20');
+        $graf->a21 = $request->get('a21');
+        $graf->a22 = $request->get('a22');
+        $graf->a23 = $request->get('a23');
+        $graf->a24 = $request->get('a24');
+        $graf->a_cyt = $this->a_cyt($graf);
+        $graf->user_id = Auth::user()->id;
+        $graf->save();
+        
+        return redirect('/graf/'.$graf->date_zamer)->with('alert', 'Запис збережено!');
     }
+  public function a_cyt(Graf $graf)
+    {
+      $a_cyt=0;
+      for($i=1; $i<25; $i++){
+
+          $aa='a'.$i;
+          $a_cyt=$a_cyt+$graf->$aa;
+      }
+      return $a_cyt;
+    }  
 
   public function delete(Graf $graf)
     {
