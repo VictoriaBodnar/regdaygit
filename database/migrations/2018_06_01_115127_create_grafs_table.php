@@ -46,21 +46,33 @@ class CreateGrafsTable extends Migration
             $table->bigInteger('a_cyt')->default('0');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
+////////////////////////////////////////////
 
+      /*      Schema::create('subcategories', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('category_slug')->unique();
+        $table->foreign('category_slug')
+       ->references('slug')->on('categories')->onUpdate('cascade')
+        ->onDelete('cascade');
+        $table->timestamps();
+  });*/
+            ///////////////////////////////////////////////////////////////
+            
             $table->foreign('kod_consumer')
                   ->references('kod_consumer')->on('consumers')
                   ->onDelete('restrict');
             /*$table->foreign('date_zamer')
                   ->references('date_zamer')->on('pasps')
-                  ->onDelete('restrict');  
-            $table->foreign('type_zamer')
+                  ->onDelete('restrict'); */
+            /*$table->foreign('type_zamer')
                   ->references('name_type')->on('types')
                   ->onDelete('restrict'); */           
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('restrict'); 
             $table->unique(['kod_consumer', 'date_zamer', 'type_zamer']);     
-           
+
+                     
         });
     }
 

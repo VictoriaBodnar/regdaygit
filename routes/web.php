@@ -119,12 +119,13 @@ use App\Http\Requests;
 Route::get('import-export-csv-excel',array('as'=>'excel.import','uses'=>'FileController@importExportExcelORCSV'));
 Route::post('import-csv-excel',array('as'=>'import-csv-excel','uses'=>'FileController@importFileIntoDB'));
 Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'FileController@downloadExcelFile'));
-Route::get('/graf/{graf?}', 'GrafController@show');
-Route::post('/graf/{graf?}','GrafController@show');
-//Route::post('/consumer_add', 'ConsumerController@store');
-//Route::get('/graf/', 'GrafController@show');
+//Route::get('/graf/{graf?}/{id?}', 'GrafController@show');
+//Route::post('/graf/{graf?}/{id?}','GrafController@show');
+Route::match(['get', 'post'], '/graf/{graf?}/{id?}', 'GrafController@show');
 Route::delete('/graf_del/{graf}','GrafController@delete');
 Route::get('/graf_edit/{graf}', 'GrafController@edit'); 
 Route::put('/graf_edit/{graf}','GrafController@update');
+Route::get('/graf_add', 'GrafController@add');
+Route::post('/graf_add', 'GrafController@store');
 
 

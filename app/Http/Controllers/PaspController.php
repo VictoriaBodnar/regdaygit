@@ -29,7 +29,8 @@ class PaspController extends Controller
      */
     public function index()
     {
-        $pasps = Pasp::orderBy('date_zamer', 'desc')->get();
+        //$pasps = Pasp::orderBy('date_zamer', 'desc')->get();
+         $pasps = Pasp::all();
 
         return view('pasps', [
           'pasps' => $pasps
@@ -136,8 +137,12 @@ class PaspController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pasp $pasp)
     {
-        //
+        //return "Destroy";
+        //Alert::warning('Are you sure?', 'message')->persistent('Close');
+
+        $pasp->delete();
+        return redirect('/pasps')->with('alert', 'Вилучено!');
     }
 }

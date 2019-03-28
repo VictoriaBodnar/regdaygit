@@ -4,20 +4,26 @@
     <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container">
         <div class="col-sm-offset-0 col-sm-12">
+            <a class="btn btn-primary" href="{{ url('graf_add') }}">Додати запис</a>
+        </div>
+        <div class="col-sm-offset-0 col-sm-12">
             <form action="{{ url('graf')}}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                            Оберіть період
+                            Оберіть період 
                         </div>
                     <div class="panel-body">
                         <!-- Display Validation Errors -->
                         @include('common.errors')
                         <div class="form-group">
                             <select name="date_zamer" id="graf-date_zamer" class="form-control">
-                                            <option value=""></option>
                                             @foreach($pasps as $pasp)
-                                             <option value="{{ $pasp->date_zamer }}">{{ $pasp->date_zamer}}</option>
+                                             {{$slmark=''}}
+                                              @if( $pasp->date_zamer == $selected_date)
+                                                {{$slmark='selected'}}
+                                              @endif
+                                             <option value="{{ $pasp->date_zamer }}" {{ $slmark }}>{{ $pasp->date_zamer}}</option>
                                             @endforeach
                             </select>
                         </div>    
@@ -59,7 +65,7 @@
             @if (count($grafs) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Режимні виміри
+                        Режимні виміри за {{$selected_date}}
                     </div>
 
                     <div class="panel-body">

@@ -14,8 +14,6 @@ use App\Http\Requests\ValidSaveGraf;
 
 
 
-
-
 class GrafController extends Controller
 {
 	 /**
@@ -33,7 +31,7 @@ class GrafController extends Controller
   }
 
 
-   public function show(Request $request, $date_zamer = null)
+   public function show(Request $request, $date_zamer = null, $id = null)
   {
         
     $users = DB::table('users')->get();
@@ -51,20 +49,25 @@ class GrafController extends Controller
         $date_zamer = Pasp::all()->max('date_zamer');
        
     }
+    if (empty($id)) {
+        $getOneId="";
+    }else{
+        $getOneId=" and g.id=".$id;
+    }
 
     $grafs = DB::select("SELECT g.id, g.kod_consumer, c.name_consumer, g.date_zamer, g.type_zamer, g.a1, g.a2, g.a3, g.a4, g.a5, g.a6, g.a7, g.a8, g.a9, g.a10, g.a11, g.a12, g.a13, g.a14, g.a15, g.a16, g.a17, g.a18, g.a19, g.a20, g.a21, g.a22, g.a23, g.a24, g.a_cyt, g.user_id, g.created_at, g.updated_at,  t.name_type, u.name u_name
       FROM grafs g
       left join consumers c on g.kod_consumer=c.kod_consumer
       left join types t on g.type_zamer=t.id
       LEFT JOIN  users u on g.user_id = u.id
-      WHERE g.date_zamer='{$date_zamer}'
+      WHERE g.date_zamer='{$date_zamer}' {$getOneId}
       order by g.date_zamer, g.kod_consumer asc");//'2017-12-20'
     
 
-
     return view('grafs', [
       'grafs' => $grafs,
-      'pasps' => $pasps
+      'pasps' => $pasps,
+      'selected_date'=>$date_zamer
     ]);
     /*if (empty($grafs)) {
       $grafs->kod_consumer = "Немає даних";
@@ -73,42 +76,52 @@ class GrafController extends Controller
       return $grafs;
     }*/
 
-    
-
+   
    } 
 
-   public function store(Request $request)
+   public function store(ValidSaveGraf $request)
   {
-		   $rules = array(
-            
-        'kod_consumer' => 'required|numeric',  
-		    'name_consumer' => 'required|max:255',
-		    'rem_id' => 'required|numeric',
-		    'otr_id' => 'required|numeric'
-		     );
-		   	$validator = Validator::make($request->all(), $rules);
+       //Validation in this class ValidSaveGraf.php 
 		   
-
-		    if ($validator->fails()) {
-		      return redirect('/consumer_list')
-		        ->withInput()
-		        ->withErrors($validator);
-		    }
-
-		    $consumer = new Consumer;
-		   	$consumer->kod_consumer = $request->kod_consumer;
-		    $consumer->name_consumer = $request->name_consumer;
-		    $consumer->rem_id = $request->rem_id;
-		    $consumer->otr_id = $request->otr_id;
-		    $consumer->user_id = Auth::user()->id;
-        $consumer->save();
-		    
-    
-		    //return redirect('/consumer_list')->with('success', 'Company added.');
-		    return redirect('/consumer_list')->with('alert', 'Додано!');
-		  
+		    $graf = new Graf;
+		   	$graf->kod_consumer = $request->kod_consumer;
+        $graf->date_zamer = $request->date_zamer;
+        $graf->type_zamer = $request->type_zamer;
+        for($i=1; $i<25; $i++){
+          $a_number = 'a'.$i;
+          $graf->$a_number = $request->$a_number;
+        }
+        /*$graf->a1 = $request->a1;
+        $graf->a2 = $request->a2;
+        $graf->a3 = $request->a3;
+        $graf->a4 = $request->a4;
+        $graf->a5 = $request->a5;
+        $graf->a6 = $request->a6;
+        $graf->a7 = $request->a7;
+        $graf->a8 = $request->a8;
+        $graf->a9 = $request->a9;
+        $graf->a10 = $request->a10;
+        $graf->a11 = $request->a11;
+        $graf->a12 = $request->a12;
+        $graf->a13 = $request->a13;
+        $graf->a14 = $request->a14;
+        $graf->a15 = $request->a15;
+        $graf->a16 = $request->a16;
+        $graf->a17 = $request->a17;
+        $graf->a18 = $request->a18;
+        $graf->a19 = $request->a19;
+        $graf->a20 = $request->a20;
+        $graf->a21 = $request->a21;
+        $graf->a22 = $request->a22;
+        $graf->a23 = $request->a23;
+        $graf->a24 = $request->a24;*/
+        $graf->a_cyt = $this->a_cyt($graf);
+        $graf->user_id = Auth::user()->id;
+        $graf->save();
+        $lastInsertedId = $graf->id;
+        
+        return redirect('/graf/'.$graf->date_zamer.'/'.$lastInsertedId)->with('alert', 'Додано!');
   } 
-
   
   public function edit($id)
     {
@@ -121,7 +134,15 @@ class GrafController extends Controller
        return view('editGrafs',compact('grafCur','id','consumers', 'pasps', 'types'));
        //return 'editGrafs';
     }
+  
 
+  public function add()
+    {
+       $consumers = DB::table('consumers')->get();//код споживача
+       $pasps = Pasp::all();//дата виміру
+       $types = DB::table('types')->get();//тип виміру
+       return view('addGrafs', compact('consumers', 'pasps', 'types'));
+    }
     /**
      * Update the specified resource in storage. 
      *
