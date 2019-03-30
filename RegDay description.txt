@@ -1,8 +1,7 @@
 ﻿To do list:
-1. DENY RUN DELETION Pasp if data for this date exists in graf 
-1.to make FileController some clear
-2.Onerow`s delete doesn`t working.
-3.+Check out dublicate insert
+1. DENY RUN DELETION & EDITION Type if data for this type exists in graf 
+2.to make FileController some clear
+3.exeption in due database constraint errors
 4.Function of deleting graf for date.
 FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

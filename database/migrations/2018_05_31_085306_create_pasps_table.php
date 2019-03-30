@@ -15,7 +15,7 @@ class CreatePaspsTable extends Migration
     {
         Schema::create('pasps', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date_zamer');
+            $table->date('date_zamer')->unique();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             

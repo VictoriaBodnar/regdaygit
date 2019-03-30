@@ -16,9 +16,9 @@ class CreateOtrsTable extends Migration
         Schema::create('otrs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('kod_podotr');
+            $table->integer('kod_podotr')->unique();
             $table->integer('kod_otr');
-            $table->string('name_otr');
+            $table->string('name_otr')->unique();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 

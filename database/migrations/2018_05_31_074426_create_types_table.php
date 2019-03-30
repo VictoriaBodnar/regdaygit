@@ -16,7 +16,7 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name_type');
+            $table->string('name_type')->unique();
             $table->string('primitka')->default('0');
             $table->integer('user_id')->unsigned();
             $table->timestamps();

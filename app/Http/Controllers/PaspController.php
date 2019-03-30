@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pasp;
+//use App\Graf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -100,7 +102,16 @@ class PaspController extends Controller
     {
           
        $pasp = Pasp::find($id);
-       return view('editPasps',compact('pasp','id'));
+       //need to check if there are related rows in graf's table
+       $graf = DB::table('grafs')->where('date_zamer', $pasp->date_zamer)->first();  
+       if ($graf === null){
+            return view('editPasps',compact('pasp','id'));
+           
+        }else{
+            return redirect('/pasps')->with('error', 'Неможливо змінити  '.$pasp->date_zamer.', існують дані!');
+
+        }
+       
        //return ('edit method runs!');
     }
 
@@ -123,12 +134,12 @@ class PaspController extends Controller
                     ->withInput()
                     ->withErrors($validator);
         }
-                  
-        $pasp = Pasp::find($id); //Retrieve a model by its primary key...
-        $pasp->date_zamer = $request->get('date_zamer');
-        $pasp->user_id = Auth::user()->id;
-        $pasp->save();
-        return redirect('/pasps')->with('alert', 'Запис збережено!');
+         $pasp = Pasp::find($id); //Retrieve a model by its primary key...
+         $pasp->date_zamer = $request->get('date_zamer');
+         $pasp->user_id = Auth::user()->id;
+         $pasp->save();
+         return redirect('/pasps')->with('alert', 'Запис збережено!');
+        
     }
 
     /**
@@ -141,8 +152,17 @@ class PaspController extends Controller
     {
         //return "Destroy";
         //Alert::warning('Are you sure?', 'message')->persistent('Close');
-
-        $pasp->delete();
-        return redirect('/pasps')->with('alert', 'Вилучено!');
+        // need to check if there are related rows in graf's table. Because creating foreign key in migation is failed.
+        $graf = DB::table('grafs')->where('date_zamer', $pasp->date_zamer)->first();
+        //$graf = Graf::where('date_zamer', $pasp->date_zamer);
+        if ($graf === null){
+            $pasp->delete();
+            return redirect('/pasps')->with('alert', 'Вилучено!');
+        }else{
+            //$grafqq=$graf;
+            //return $grafqq;
+            return redirect('/pasps')->with('error', 'Неможливо вилучити  '.$pasp->date_zamer.', існують дані!');
+        }  
+              
     }
 }

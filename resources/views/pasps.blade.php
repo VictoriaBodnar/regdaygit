@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container">
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
@@ -39,6 +40,11 @@
             @if (session('alert'))
                 <div class="alert alert-success" id="success-alert">
                     {{ session('alert') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger" >
+                    {{ session('error') }}
                 </div>
             @endif
 

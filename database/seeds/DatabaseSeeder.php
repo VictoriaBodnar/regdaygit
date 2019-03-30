@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
          $this->call(OtrsTableSeeder::class);
          $this->call(TypesTableSeeder::class);
          $this->call(PaspsTableSeeder::class);
+         $this->call(ConsumersTableSeeder::class);
         
 
     }
