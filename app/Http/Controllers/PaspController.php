@@ -111,8 +111,6 @@ class PaspController extends Controller
             return redirect('/pasps')->with('error', 'Неможливо змінити  '.$pasp->date_zamer.', існують дані!');
 
         }
-       
-       //return ('edit method runs!');
     }
 
     /**
@@ -150,8 +148,7 @@ class PaspController extends Controller
      */
     public function destroy(Pasp $pasp)
     {
-        //return "Destroy";
-        //Alert::warning('Are you sure?', 'message')->persistent('Close');
+        
         // need to check if there are related rows in graf's table. Because creating foreign key in migation is failed.
         $graf = DB::table('grafs')->where('date_zamer', $pasp->date_zamer)->first();
         //$graf = Graf::where('date_zamer', $pasp->date_zamer);

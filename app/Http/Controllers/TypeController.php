@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Type;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
@@ -94,8 +95,13 @@ class TypeController extends Controller
     {
         
        $type = Type::find($id);
-       return view('editTypes',compact('type','id'));
-       //return ('edit method runs!');
+       //need to check if there are related rows in graf's table
+       $graf = DB::table('grafs')->where('type_zamer', $type->name_type)->first(); 
+       if ($graf === null){
+            return view('editTypes',compact('type','id'));
+       }else{
+            return redirect('/types')->with('error', 'Неможливо редагувати тип:  '.$type->name_type.'. Існують дані!');  
+       }
     }
 
     /**
@@ -139,7 +145,13 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        $type->delete();
-        return redirect('/types')->with('alert', 'Вилучено!');
+        // need to check if there are related rows in graf's table. Because creating foreign key in migation is failed.
+        $graf = DB::table('grafs')->where('type_zamer', $type->name_type)->first();
+        if ($graf === null){
+            $type->delete();
+            return redirect('/types')->with('alert', 'Вилучено!');
+        }else{
+            return redirect('/types')->with('error', 'Неможливо вилучити тип:  '.$type->name_type.'. Існують дані!');   
+        }
     }
 }

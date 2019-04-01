@@ -45,7 +45,11 @@
                     {{ session('alert') }}
                 </div>
             @endif
-
+            @if (session('error'))
+                <div class="alert alert-danger" >
+                    {{ session('error') }}
+                </div>
+            @endif
             <!-- Current Tasks -->
             @if (count($types) > 0)
                 <div class="panel panel-default">
