@@ -105,8 +105,6 @@ use App\Http\Requests;
   PUT     /PATCH /rems/{rem}      update    rems.update
   DELETE  /rems/{rem}             destroy   rems.destroy*/
 
-
-
   Route::resource('otrs', 'OtrController');
   Route::resource('pasps', 'PaspController');
   Route::resource('types', 'TypeController');
@@ -127,5 +125,8 @@ Route::get('/graf_edit/{graf}', 'GrafController@edit');
 Route::put('/graf_edit/{graf}','GrafController@update');
 Route::get('/graf_add', 'GrafController@add');
 Route::post('/graf_add', 'GrafController@store');
+
+// Exception routes
+Route::get('exception/index', 'ExceptionController@index');
 
 

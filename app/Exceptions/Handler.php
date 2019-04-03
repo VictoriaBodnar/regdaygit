@@ -44,9 +44,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \App\Exceptions\CustomException)  {
+            return $exception->render_custom($request);
+        }
+        //check the type of the exception you are interested at
+        if ($exception instanceof \Illuminate\Database\QueryException) {
+
+
+            //do wathever you want, for example returining a specific view
+            
+            /*return response()->view(
+                'errors.custom',
+                array(
+                    'exception' => $exception
+                )
+            );*/
+            return $exception->render($request);
+        }
+     
+       
         return parent::render($request, $exception);
     }
-
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
