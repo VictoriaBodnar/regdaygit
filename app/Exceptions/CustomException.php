@@ -29,5 +29,6 @@ class CustomException extends Exception
                     'exception' => $this
                 )
         );
+        
     }
 }

@@ -51,15 +51,21 @@ class Handler extends ExceptionHandler
         if ($exception instanceof \Illuminate\Database\QueryException) {
 
 
-            //do wathever you want, for example returining a specific view
+            $rr = $exception->getMessage();
+            $ss = $exception->getSql();
+            $dbCode = $exception->getCode();
+
+            switch ($dbCode)
+            {
+                case 23000:
+                    $errorMessage = 'Дані не збережено, порушено унікальність.';
+                    break;
+                default:
+                    $errorMessage = 'database invalid';
+            }
             
-            /*return response()->view(
-                'errors.custom',
-                array(
-                    'exception' => $exception
-                )
-            );*/
-            return $exception->render($request);
+            throw new \App\Exceptions\CustomException($errorMessage);
+            
         }
      
        
