@@ -58,17 +58,16 @@ class Handler extends ExceptionHandler
             switch ($dbCode)
             {
                 case 23000:
-                    $errorMessage = 'Дані не збережено, порушено унікальність.';
+                    $errorMessage = 'Дані не збережено, порушено унікальність, оскільки такий запис уже існує.';
                     break;
                 default:
-                    $errorMessage = 'database invalid';
+                    //$errorMessage = 'database invalid<br>'.$rr;
+                    return parent::render($request, $exception);
             }
             
             throw new \App\Exceptions\CustomException($errorMessage);
             
         }
-     
-       
         return parent::render($request, $exception);
     }
     /**

@@ -12,7 +12,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                             Оберіть період 
-                        </div>
+                    </div>
                     <div class="panel-body">
                         <!-- Display Validation Errors -->
                         @include('common.errors')
@@ -26,7 +26,21 @@
                                              <option value="{{ $pasp->date_zamer }}" {{ $slmark }}>{{ $pasp->date_zamer}}</option>
                                             @endforeach
                             </select>
-                        </div>    
+                        </div>
+                        <div class="panel-heading">
+                            Оберіть тип виміру 
+                        </div>
+                        <div class="form-group">
+                            <select name="type_zamer" id="graf-type_zamer" class="form-control">
+                                            @foreach($types as $type)
+                                             {{$slmark=''}}
+                                              @if( $type->name_type == $selected_type)
+                                                {{$slmark='selected'}}
+                                              @endif
+                                             <option value="{{ $type->name_type }}" {{ $slmark }}>{{ $type->name_type}}</option>
+                                            @endforeach
+                            </select>
+                        </div>        
                         <!-- Add Task Button -->
                         <div class="form-group">
                                 <div class="col-sm-offset-0 col-sm-1">
@@ -65,7 +79,7 @@
             @if (count($grafs) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Режимні виміри за {{$selected_date}}
+                        Режимні виміри за: {{$selected_date}} тип виміру: {{$selected_type}}
                     </div>
 
                     <div class="panel-body">

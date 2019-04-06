@@ -31,43 +31,45 @@ class GrafController extends Controller
   }
 
 
-   public function show(Request $request, $date_zamer = null, $id = null)
+   public function show(Request $request, $date_zamer = null, $id = null, $type_zamer = null)
   {
-        
+    //return  $type_zamer; 
+    $getOneId='';  
     $users = DB::table('users')->get();
     $rems = DB::table('rems')->get();
     $otrs = DB::table('otrs')->get();
+    $types = DB::table('types')->get();
     //$pasps = DB::table('pasps')->orderBy('id','DESC')->get();   
     $pasps = Pasp::all();
-
-
-    if ($request->isMethod('post')) { $date_zamer = $request->date_zamer; }
+    if ($request->isMethod('post')) { 
+      $date_zamer = $request->date_zamer; 
+      $type_zamer = $request->type_zamer; 
+    }
     
     if (empty($date_zamer)) {
-        
         //$date_zamer = DB::table('pasps')->max('date_zamer');
         $date_zamer = Pasp::all()->max('date_zamer');
-       
     }
-    if (empty($id)) {
-        $getOneId="";
-    }else{
-        $getOneId=" and g.id=".$id;
+    if (empty($type_zamer)) {
+        $type_zamer = 'акт'; 
     }
+    if (!empty($id)) { $getOneId=" and g.id=".$id; }
 
     $grafs = DB::select("SELECT g.id, g.kod_consumer, c.name_consumer, g.date_zamer, g.type_zamer, g.a1, g.a2, g.a3, g.a4, g.a5, g.a6, g.a7, g.a8, g.a9, g.a10, g.a11, g.a12, g.a13, g.a14, g.a15, g.a16, g.a17, g.a18, g.a19, g.a20, g.a21, g.a22, g.a23, g.a24, g.a_cyt, g.user_id, g.created_at, g.updated_at,  t.name_type, u.name u_name
       FROM grafs g
       left join consumers c on g.kod_consumer=c.kod_consumer
       left join types t on g.type_zamer=t.id
       LEFT JOIN  users u on g.user_id = u.id
-      WHERE g.date_zamer='{$date_zamer}' {$getOneId}
+      WHERE g.date_zamer='{$date_zamer}' and g.type_zamer='{$type_zamer}' {$getOneId}
       order by g.date_zamer, g.kod_consumer asc");//'2017-12-20'
     
 
     return view('grafs', [
       'grafs' => $grafs,
       'pasps' => $pasps,
-      'selected_date'=>$date_zamer
+      'types' => $types,
+      'selected_date'=>$date_zamer,
+      'selected_type'=>$type_zamer
     ]);
     /*if (empty($grafs)) {
       $grafs->kod_consumer = "Немає даних";
