@@ -30,7 +30,7 @@ class OtrController extends Controller
      */
     public function index()
     {
-        $otrs = Otr::orderBy('created_at', 'asc')->get();
+        $otrs = Otr::orderBy('created_at', 'desc')->get();
 
         return view('otrs', [
           'otrs' => $otrs
@@ -148,7 +148,7 @@ class OtrController extends Controller
     //public function destroy($id) // this was set by default
     public function destroy(Otr $otr)
     {
-        $rem->delete();
+        $otr->delete();
         return redirect('/otrs')->with('alert', 'Вилучено!');
         //return ('<p>sdfsdfdfdsfsdf</p>');
     }

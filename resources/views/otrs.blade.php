@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-0 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New otr
+                    Нова галузь
                 </div>
 
                 <div class="panel-body">
@@ -18,19 +18,19 @@
 
                         <!-- Task Name -->
                         <div class="form-group">
-                            <label for="otr-kod_otr" class="col-sm-6 control-label">Код галузі</label>
+                            <label for="otr-kod_otr" class="col-sm-2 control-label">Код галузі</label>
                             <div class="col-sm-6">
                                 <input type="text" name="kod_otr" id="otr-kod_otr" class="form-control" value="{{ old('otr') }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="otr-name_otr" class="col-sm-6 control-label">Назва галузі</label>
+                            <label for="otr-name_otr" class="col-sm-2 control-label">Назва галузі</label>
                             <div class="col-sm-6">
                                 <input type="text" name="name_otr" id="otr-name_otr" class="form-control" value="{{ old('otr') }}">
                             </div>
                         </div>  
                         <div class="form-group">
-                            <label for="otr-kod_otr" class="col-sm-6 control-label">Код підгалузі</label>
+                            <label for="otr-kod_otr" class="col-sm-2 control-label">Код підгалузі</label>
                             <div class="col-sm-6">
                                 <input type="text" name="kod_podotr" id="otr-kod_podotr" class="form-control" value="{{ old('otr') }}">
                             </div>
@@ -39,9 +39,9 @@
 
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-2 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add otr
+                                    <i class="fa fa-btn fa-plus"></i>Додати
                                 </button>
                             </div>
                         </div>

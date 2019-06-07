@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
             switch ($dbCode)
             {
                 case 23000:
-                    $errorMessage = 'Дані не збережено, порушено унікальність, оскільки такий запис уже існує.';
+                    $errorMessage = 'Дані не збережено, порушено унікальність, існує пов\'язаний запис.';
                     break;
                 default:
                     //$errorMessage = 'database invalid<br>'.$rr;

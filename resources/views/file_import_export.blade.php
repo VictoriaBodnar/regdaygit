@@ -10,7 +10,8 @@
  <!--<div class="panel-heading">Laravel 5 maatwebsite export into csv and excel and import into DB</div>-->
   <div class="panel-body"> 
   <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
+     
+        <div class="col-md-8 col-md-offset-0">
         <a href="{{ route('excel-file',['type'=>'xls']) }}">Download Excel xls</a> |
         <a href="{{ route('excel-file',['type'=>'xlsx']) }}">Download Excel xlsx</a> |
         <a href="{{ route('excel-file',['type'=>'csv']) }}">Download CSV</a>

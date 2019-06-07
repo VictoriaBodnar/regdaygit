@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-0 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New type
+                    Новий тип виміру
                 </div>
 
                 <div class="panel-body">
@@ -18,22 +18,22 @@
 
                         <!-- Task Name -->
                         <div class="form-group">
-                            <label for="type-name_type" class="col-sm-6 control-label">Назва типу</label>
+                            <label for="type-name_type" class="col-sm-2 control-label">Назва типу</label>
                             <div class="col-sm-6">
                                 <input type="text" name="name_type" id="type-name_type" class="form-control" value="{{ old('type') }}">
                             </div>
                         </div>
                          <div class="form-group">
-                            <label for="type-primitka" class="col-sm-6 control-label">Примітка</label>
+                            <label for="type-primitka" class="col-sm-2 control-label">Примітка</label>
                             <div class="col-sm-6">
                                 <input type="text" name="primitka" id="type-primitka" class="form-control" value="{{ old('type') }}">
                             </div>
                         </div>    
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-2 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add type
+                                    <i class="fa fa-btn fa-plus"></i>Додати
                                 </button>
                             </div>
                         </div>

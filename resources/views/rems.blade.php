@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-0 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New rem
+                    Новий РЕМ
                 </div>
 
                 <div class="panel-body">
@@ -18,19 +18,19 @@
 
                         <!-- Task Name -->
                         <div class="form-group">
-                            <label for="rem-kod_rem" class="col-sm-6 control-label">Код РЕМ</label>
+                            <label for="rem-kod_rem" class="col-sm-1 control-label">Код РЕМ</label>
                             <div class="col-sm-6">
                                 <input type="text" name="kod_rem" id="rem-kod_rem" class="form-control" value="{{ old('rem') }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="rem-name_rem" class="col-sm-6 control-label">Назва РЕМ</label>
+                            <label for="rem-name_rem" class="col-sm-1 control-label">Назва РЕМ</label>
                             <div class="col-sm-6">
                                 <input type="text" name="name_rem" id="rem-name_rem" class="form-control" value="{{ old('rem') }}">
                             </div>
                         </div>  
                         <div class="form-group">
-                            <label for="rem-kod_rem" class="col-sm-6 control-label">Код мережі</label>
+                            <label for="rem-kod_rem" class="col-sm-1 control-label">Код мережі</label>
                             <div class="col-sm-6">
                                 <input type="text" name="kod_seti" id="rem-kod_seti" class="form-control" value="{{ old('rem') }}">
                             </div>
@@ -39,9 +39,9 @@
 
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-0 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add rem
+                                    <i class="fa fa-btn fa-plus"></i>Додати
                                 </button>
                             </div>
                         </div>

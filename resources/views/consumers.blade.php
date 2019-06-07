@@ -5,7 +5,7 @@
         <div class="col-sm-offset-0 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Consumer
+                    Новий споживач
                 </div>
 
                 <div class="panel-body">
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-0 col-sm-1">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Consumer
+                                    <i class="fa fa-btn fa-plus"></i>Додати
                                 </button>
                             </div>
                         </div>

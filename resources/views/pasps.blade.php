@@ -3,10 +3,10 @@
 @section('content')
     <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-0 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New pasp
+                    Новий паспорт задачі
                 </div>
 
                 <div class="panel-body">
@@ -19,8 +19,8 @@
 
                         <!-- Task Name -->
                         <div class="form-group">
-                            <label for="pasp-date_zamer" class="col-sm-6 control-label">Дата виміру</label>
-                            <div class="col-sm-6">
+                            <label for="pasp-date_zamer" class="col-sm-2 control-label">Дата виміру</label>
+                            <div class="col-sm-5">
                                 <input type="text" name="date_zamer" id="pasp-date_zamer" class="form-control" value="{{ old('pasp') }}">
                             </div>
                         </div>
@@ -28,9 +28,9 @@
 
                         <!-- Add Task Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-2 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add pasp
+                                    <i class="fa fa-btn fa-plus"></i>Додати
                                 </button>
                             </div>
                         </div>

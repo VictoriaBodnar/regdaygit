@@ -32,7 +32,7 @@ class PaspController extends Controller
     public function index()
     {
         //$pasps = Pasp::orderBy('date_zamer', 'desc')->get();
-         $pasps = Pasp::all();
+         $pasps = Pasp::all()->orderBy('created_at', 'desc');
 
         return view('pasps', [
           'pasps' => $pasps

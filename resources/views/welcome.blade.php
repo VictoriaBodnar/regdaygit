@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+        
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <!-- Styles -->
         <style>
@@ -43,7 +45,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: left;
             }
 
             .title {
@@ -73,6 +75,8 @@
         </style>
         <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+        
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -105,7 +109,7 @@
         <img src="{{ asset('pic/IMG_0263.JPG') }}" alt="profile Pic" height="70%" width="100%">
         <div class="carousel-caption">
           <div class="title m-b-md">
-                    ПАТ "Вінницяобленерго"
+                    АТ "Вінницяобленерго"
                     Режимний день
           </div>
           
@@ -117,7 +121,7 @@
         
         <div class="carousel-caption">
           <div class="title m-b-md">
-                    ПАТ "Вінницяобленерго"
+                    АТ "Вінницяобленерго"
                     Режимний день
           </div>
          
@@ -128,7 +132,7 @@
         <img src="{{ asset('pic/IMG_0265.JPG') }}" alt="profile Pic" height="70%" width="100%">
         <div class="carousel-caption">
           <div class="title m-b-md">
-                    ПАТ "Вінницяобленерго"
+                    АТ "Вінницяобленерго"
                     Режимний день
           </div>
           
@@ -139,7 +143,7 @@
         <img src="{{ asset('pic/IMG_0302.JPG') }}" alt="profile Pic" height="70%" width="100%">
         <div class="carousel-caption">
           <div class="title m-b-md">
-                    ПАТ "Вінницяобленерго"
+                    АТ "Вінницяобленерго"
                      Режимний день
           </div>
           

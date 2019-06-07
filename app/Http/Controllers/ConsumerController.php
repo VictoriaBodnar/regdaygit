@@ -45,7 +45,7 @@ class ConsumerController extends Controller
                              LEFT JOIN  users u on c.user_id = u.id
                              LEFT JOIN  rems r on c.rem_id = r.id
                              LEFT JOIN  otrs o on c.otr_id = o.id
-                             Order by c.created_at asc");
+                             Order by c.created_at desc");
 
     return view('consumers', [
       'consumers' => $consumers,      
