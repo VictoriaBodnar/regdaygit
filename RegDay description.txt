@@ -154,7 +154,13 @@ http://www.expertphp.in/article/laravel-5-maatwebsite-import-excel-into-db-and-e
 Подключение классов Form , Html
 https://laravelcollective.com/docs/5.4/html
 
-загружаемый CSV файл  режимних измерений д б в кодировке UTF-8
+
+
+Порядок подготовки файла загрузки режимных измерерий.
+1.Экселевский файл сохранить как csv с разделителями запятыми.
+2.Открыть csv при помощи Excel. Изменить формат даты на yyyy-mm-dd
+3.Открыть csv при помощи Блокнот заменить ; на ,
+
 Проверки при загрузке:
 Поле даты date_zamer берем значение поля из первой строки и проверяем, что оно существует в табл pasps, и далее берем 
 это значение для всех остальных строк как поле даты.(так как оно д б одинаковым для всех сторк)
@@ -171,7 +177,54 @@ https://laravelcollective.com/docs/5.4/html
 
 Показать общую сумму по файлу для сверки
 
-***********************************************************************************************
+**********************************************************************************************
+
+Настроить доступ к приложению по сети:
+
+For WAMPServer 3 and above
+In WAMPServer 3 there is a Virtual Host defined by default. Therefore the above suggestions do not work. You no longer need to make ANY amendments to the httpd.conf file. You should leave it exactly as you find it.
+
+Instead, leave the server OFFLINE as this funtionality is defunct and no longer works, which is why the Online/Offline menu has become optional and turned off by default.
+
+Now you should edit the \wamp\bin\apache\apache{version}\conf\extra\httpd-vhosts.conf file. In WAMPServer3.0.6 and above there is actually a menu that will open this file in your editor
+
+left click wampmanager -> Apache -> httpd-vhost.conf
+just like the one that has always existsed that edits your httpd.conf file.
+
+It should look like this if you have not added any of your own Virtual Hosts
+
+#
+# Virtual Hosts
+#
+
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot c:/wamp/www
+    <Directory  "c:/wamp/www/">
+        Options +Indexes +FollowSymLinks +MultiViews
+        AllowOverride All
+        Require local
+    </Directory>
+</VirtualHost>
+Now simply change the Require parameter to suite your needs EG
+
+If you want to allow access from anywhere replace Require local with
+
+Require all granted
+If you want to be more specific and secure and only allow ip addresses within your subnet add access rights like this to allow any PC in your subnet
+
+Require local
+Require ip 192.168.1
+Or to be even more specific
+
+Require local
+Require ip 192.168.1.100
+Require ip 192.168.1.101
+
+
+Запуск сервера Laravel с доступом по лок.сети:
+php artisan serve --host 0.0.0.0 
+
 
 
 
