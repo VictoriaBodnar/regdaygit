@@ -2,7 +2,7 @@
 1.В форме загрузки -укр мова
 2.to make FileController some clear
 4.Function of deleting graf for date.
-FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 git status 
 
@@ -17,7 +17,7 @@ git push -u regdaygit master
 
 Накатить из уд.реп git pull regdaygit
 
-
+https://github.com/VictoriaBodnar/regdaygit.git
 -----------------------------------------------------------------------------
 PROJECT RegDay
 
