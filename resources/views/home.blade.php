@@ -1,27 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading"><a href="{{ url('/consumer_list') }}">Довідник споживачів</a></div>
-                <div class="panel-heading"><a href="{{ url('/rems') }}">Довідник РЕМів</a></div>
-                <div class="panel-heading"><a href="{{ url('/otrs') }}">Довідник галузей</a></div>
-                <div class="panel-heading"><a href="{{ url('/pasps') }}">Паспорт задачі</a></div>
-                <div class="panel-heading"><a href="{{ url('/types') }}">Тип виміру</a></div>
-                
-               <!-- <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    You are logged in!
-                </div>-->
-            </div>
+    <div class="w3-half w3-padding">
+        <div class="w3-card white">
+          <div class="w3-container w3-card-4 w3-theme">
+            <h3>Довідники</h3>
+          </div>
+          <ul class="w3-ul w3-border-top">
+            <li class="w3-hover-grey">
+              <h3><a href="{{ url('/consumer_list') }}">Довідник споживачів</a></h3>
+            </li>
+            <li class="w3-hover-grey">
+              <h3><a href="{{ url('/rems') }}">Довідник РЕМів</a></h3>
+            </li>
+            <li class="w3-hover-grey">
+              <h3><a href="{{ url('/otrs') }}">Довідник галузей</a></h3>
+            </li>
+            <li class="w3-hover-grey">
+              <h3><a href="{{ url('/pasps') }}">Паспорт задачі</a></h3>
+            </li>
+            <li class="w3-hover-grey">
+              <h3><a href="{{ url('/types') }}">Тип виміру</a></h3>
+            </li>
+          </ul>
         </div>
     </div>
-</div>
 @endsection

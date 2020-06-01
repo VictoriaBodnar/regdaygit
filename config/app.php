@@ -11,9 +11,13 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     */
-
+    //this command take name from .env file or set default name if isn't .env
     'name' => env('APP_NAME', 'Режимний день'),
+    //'name' => 'Your App Name',
 
+    'company' => 'АТ "Вінницяобленерго"',
+    'subtitle' => 'Служба програмного супроводу тел. 78-1',
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment

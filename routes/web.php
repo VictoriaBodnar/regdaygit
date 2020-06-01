@@ -12,14 +12,12 @@
 */
 
 Route::get('/', function () {
+    //return view('oldwelcome');
     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 use App\Consumer;
 use Illuminate\Http\Request;
