@@ -1,7 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="w3-half w3-padding">
+    
+    @if (session('status'))
+        <div class="w3-panel w3-green">
+            {{ session('status') }}
+        </div>
+    @endif
+    <form class="w3-container w3-card-4 w3-theme" method="POST" action="{{ route('password.email') }}">
+                        {{ csrf_field() }}
+        <h2>Відновлення паролю</h2><hr>  
+        <div class="w3-section {{ $errors->has('email') ? ' has-error' : '' }}">
+            <label>E-Mail Адреса</label>
+            <input id="email" type="email" class="w3-input w3-border w3-round" name="email" value="{{ old('email') }}" required>
+                    @if ($errors->has('email'))
+                       <span class="w3-cell-row"><strong>{{ $errors->first('email') }}</strong></span>
+                    @endif
+        </div>
+        <div class="w3-section">
+            <button type="submit" class="w3-button w3-large w3-white w3-border w3-round-medium">Відправити посилання для відновлення паролю</button>
+        </div>
+    </form>
+</div>
+
+<!--<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -43,5 +67,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @endsection

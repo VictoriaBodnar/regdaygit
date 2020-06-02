@@ -1,90 +1,59 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ config('app.name') }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- Styles -->
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Режимний день') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--<style>
-    .form-horizontal .control-label {
-       text-align: left;
-    }
-    div .col-sm-6 {
-       text-align: left;
-    }
-    </style>-->
-
-</head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-
-                       &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Увійти</a></li>
-                            <li><a href="{{ route('register') }}">Зареєструватись</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Вихід
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+    <header class="w3-container w3-theme w3-padding">
+        <div class="w3-cell-row w3-theme">
+            <div class="w3-cell">
+                <h2>{{ config('app.name') }}</h2>
             </div>
-        </nav>
-        @yield('content')
-    </div>
+            <div class="w3-cell w3-right">
+               @if (Route::has('login'))
+                      @if (Auth::check())
+                          <div class="w3-dropdown-hover">
+                            <button class="w3-button w3-theme ">
+                              {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                                <a href="{{ route('logout') }}" class="w3-bar-item w3-button w3-theme" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Вихід </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                                            {{ csrf_field() }}
+                                </form>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 1</a>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 2</a>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 3</a>
+                            </div>
+                          </div>
+                        @else
+                          <a href="{{ url('/login') }}">Увійти</a>
+                          <a href="{{ url('/register') }}">Зареєструватись</a>
+                      @endif
+                @endif 
+            </div>
+        </div>    
+    </header>
 
+    <div class="w3-rest w3-white w3-display-container" style="min-height:460px"> <!--      style="min-height:460px"-->
+      <!--<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
+      <h2>London</h2>                              style="min-height:460px"
+      <p>London is the capital city of England. It is the most populous city in the United Kingdom</p>
+      -->
+      @yield('content')
+    </div> 
+
+    <footer class="w3-container w3-theme">
+      <h5>{{ config('app.company') }}</h5>
+      <p class="w3-opacity">{{ config('app.subtitle') }}</p>
+    </footer>
+    <!--  ************************************************************************************************************************-->
+        
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>

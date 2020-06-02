@@ -9,7 +9,7 @@ To align all form to left.
 4.Function of deleting graf for date.
 
 
-
+FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 git status 
 

@@ -1,27 +1,22 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-   <!-- Display Validation Errors -->
+<div class="w3-half w3-padding">
   @include('common.errors')
-  <form method="post" action="{{action('TypeController@update', $id)}}">
-    <div class="form-group row">
-      {{csrf_field()}}
-       <input name="_method" type="hidden" value="PATCH">
-      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Назва типу</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="name_type" value="{{$type->name_type}}">
-      </div>
-    </div>  
-    <div class="form-group row">  
-      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Примітка</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput"  name="primitka" value="{{$type->primitka}}">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-md-2"></div>
-      <button type="submit" class="btn btn-primary">Зберегти</button>
-    </div>
-  </form>
+    <form class="w3-container w3-card-4 w3-theme" method="POST" action="{{action('TypeController@update', $id)}}">
+                        {{ csrf_field() }}
+        <h3>Тип виміру - змінити</h3><hr>       
+        <input name="_method" type="hidden" value="PATCH">
+        <div class="w3-section">
+            <label>Назва типу</label>
+             <input type="text" class="w3-input w3-border w3-round" id="lgFormGroupInput"  name="name_type" value="{{$type->name_type}}" required autofocus>
+        </div>
+        <div class="w3-section">
+            <label>Примітка</label>
+            <input type="text" class="w3-input w3-border w3-round" id="lgFormGroupInput"  name="primitka" value="{{$type->primitka}}" required>
+        </div>
+        <div class="w3-section">
+            <button type="submit" class="w3-button w3-large w3-white w3-border w3-round-medium">Зберегти</button>
+        </div>
+    </form>
 </div>
 @endsection
