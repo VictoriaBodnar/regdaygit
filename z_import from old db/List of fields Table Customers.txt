@@ -1,0 +1,840 @@
+
+update zam_consumer set name_consumer=concat(name_consumer,'-',kod_rem) where name_consumer in ('Виробничі потреби','Власні потреби','ВЛАСНЕ СПОЖИВАННЯ','Втрати в вмережах','Втрати в мережах','Корисний відпуск','Освітлення','Освітлення і побут','Освітлення, побут','Сільгоспспоживачі','ТОВ ПК "Зоря Поділля"') 
+
+
+SELECT * FROM `zam_consumer` where name_consumer in ('Виробничі потреби','Власні потреби','ВЛАСНЕ СПОЖИВАННЯ','Втрати в вмережах','Втрати в мережах','Корисний відпуск','Освітлення','Освітлення і побут','Освітлення, побут','Сільгоспспоживачі','ТОВ ПК "Зоря Поділля"') order by name_consumer
+
+
+SELECT name_consumer,COUNT(*)
+FROM zam_consumer      
+GROUP BY name_consumer
+having COUNT(*)>1
+
+
+
+select concat('insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (',old.kod_consumer,',"',REPLACE(old.name_consumer,'\"','\\"'),'",',old.kod_grp,',',old.kod_seti,',',(select id from rems where kod_rem=old.kod_rem),',',(select id from otrs where kod_otr=old.kod_otr and kod_podotr=old.kod_podotr),',', 1,',','"2019-09-23 15:14:50", "2019-09-23 15:14:50");')
+from zam_consumer old
+
+=========================================================================================================================================================================
+Local Databases/regday/zam_consumer/		http://127.0.0.1/phpmyadmin/sql.php?db=regday&table=zam_consumer&token=11d542b1a90236de8c63ed2cbdd80b82&pos=0
+
+    
+
+
+ Данное выделение не содержит уникального столбца. Изменение сетки, выставление галочки, редактирование, копирование и удаление невозможно. 
+
+ Отображение строк 0 - 392 (393 всего, Запрос занял 0.0070 сек.)
+
+select concat('insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (',old.kod_consumer,',"',REPLACE(old.name_consumer,'\"','\\"'),'",',old.kod_grp,',',old.kod_seti,',',(select id from rems where kod_rem=old.kod_rem),',',(select id from otrs where kod_otr=old.kod_otr and kod_podotr=old.kod_podotr),',', 1,',','"2019-09-23 15:14:50", "2019-09-23 15:14:50");')
+from zam_consumer old
+
+
+concat('insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (',old.kod_consumer,',"',REPLACE(old.name_consumer,'\"','\\"'),'",',old.kod_grp,',',old.kod_seti,',',(select id from rems whe	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72101100,"Власне споживання, брутто",11,7,13,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72101200,"Корисний відпуск-721",12,7,13,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72101700,"Втрати в мережах-721",17,7,13,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72101701,"В/в втрати",17,7,13,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72101800,"Виробничі потреби-721",18,7,13,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72103100,"Вінтеплокомуненерго 1614",31,7,13,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72103105,"ВОТЕ (загальн) 4011",31,7,13,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72103200,"Освітлення, побут-721",32,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72103304,"Вінницяводоканал (заг.сп)",33,7,13,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72103420,"ТТУ (заг.сп) 123",34,7,13,44,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72104003,"Сільгоспспоживачі-721",40,7,13,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72110103,"ДП НЕК Укренерго (346)",101,7,13,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72110900,"ЗАТ \"Побутхім\" (1526)",109,7,13,21,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72111300,"Завод \"Кристал\" 1236",113,7,13,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72113100,"Він.інструм.з-д (1206)",131,7,13,25,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72113501,"ВАТ \"ВЗТА\" (1243)",135,7,13,27,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72113502,"З-д \"пНЕВМАТИКА\" 611",135,7,13,27,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72113504,"ТОВ \"ВОМЗ\" 1210",135,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114200,"ВАТ \"Маяк\" (1200)",142,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114203,"СНПП \"Форт\" (1202)",142,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114204,"ДІВП \"Інфракон\"  (468)",142,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114205,"СП \"Анфол\" (605)",142,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114207,"ТОВ \"Полімер\" (634)",142,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72114300,"ЕМУ Він.ламп.з-д (1203)",143,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72115003,"\"Барлінек Україна\" (4047)",150,7,13,29,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72115218,"ПрАТ \"Будматеріали\"",152,7,13,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72115302,"ПАТ \"Володарка\"",153,7,13,36,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72115303,"ЗАТ \"Поділля \" (1240)",153,7,13,36,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130001,"ТОВ\"Трейдленд\"(4511)",300,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130004,"ВМЖК (1234)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130005,"Кондитерська ф-ка (1227)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130007,"ВАТ \"Дослідний завод\"(83)",300,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130008,"ТОВ \"Агроград В\"  (2537) ",300,7,13,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130012,"ТОВ\"Марлін\"(3875)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130026,"\"Аграна Фрут ..\"(1247)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130029,"ТОВ \"АВІС\" (1132)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130032,"Він.харчосмакова (1379)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130036,"ВФ \"Панда\" (1393)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130043,"ТКЕ \"Маяк\" (1242)",300,7,13,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72130049,"ЗАТ \"Інфузія\" (2973)",300,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72133601,"ПАТ \"Концерн\"Хлібпром\" ",336,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72133603,"\"Вінниця-млин  (1499)",336,7,13,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72135501,"Аеропор (414)т ",355,7,13,46,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72135702,"Він.дир. \"Укртелеком\"(442",357,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72137003,"Він.СКТБ ОПК (731)",370,7,13,47,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138006,"Вінницький універмаг( 407",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138010,"ТОВ \"Петроцентр (129)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138011,"ТОВ \"Метро\" (4637)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138012,"\"Об\"єднання ринків\"(158)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138014,"ТОВ \"Магіцентр\" (4211)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138015,"ТОВ \"Господарник\" (2925)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138022," МПП Руслана (4711)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138029,"ТОВ \"Епіцентр К\" (3185)",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138032,"ТОВ \"Фроззі-Фуд\" Келецька",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138034,"ТОВ \"НВП \"АРГОН\"",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138035,"ПІІ \"МакДональдзЮкрейн\"",380,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72138203,"ФОП Беляш О.М. (3714)",382,7,13,47,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72140800,"45-й завод (1211)",408,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72144017,"ТОВ \"БМУ-3\"",440,7,13,47,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72172401,"ОАО \"Обл.з-д ЖБіК\"(144)",724,7,13,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72172404,"Упр.комун.власності  (321",724,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72173001,"ТОВ \"Кедр -КВ\"(3761)",730,7,13,29,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72173011,"ТОВ \"Даймон-центр\"(3890)",730,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189900,"Ф-ка \"Динамо\" (63)",899,7,13,36,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189902,"УПП УТОС (214)",899,7,13,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189905,"Шпиталь ІВВВ (374)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189908,"ПП \"Дячун\" (630)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189917,"МКЛ швидкої мед.д (486)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189918,"Лікарня ім.Пирогова (148)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189922,"ПСК\"П-во облспоживспіл(82",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189940,"Облонкодиспансер (211)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189959,"ВМПП \"Геліка\" (1259)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72189962,"ТОВ\"Бастіон2009\"(3651)",899,7,13,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72190004,"ВНМУ ім.Пирогова",899,7,13,50,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72190012,"ТОВ \"Аграна Джус Україна\"",899,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72190013,"ПАТ ВМЗ \"Рошен\"",899,7,13,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72201100,"ВЛАСНЕ СПОЖИВАННЯ-722",11,7,7,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72201200,"НЕТТО",12,7,7,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72201700,"Втрати в мережах-722",17,7,7,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72203100,"КП Теплоенергетик",31,7,7,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72203200,"Освітлення, побут-722",32,7,7,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72204000,"Сільгоспспоживачі-722",40,7,7,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72214100,"ВАТ \"Машзавод ім. Кірова\"",141,7,7,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72215201,"ТОВ \"Вендичанський цегель",152,7,7,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72230005,"ВАТ \"Консервний завод\"",300,7,7,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72230006,"Мог.Под.молокозавод",300,7,7,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72235700,"Ямпільське упрр.водн госп",357,7,7,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72289901,"Мог.Под.ВК-114",899,7,7,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72289904,"Монтажний технікум ",899,7,7,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72301100,"Власне споживання-723",11,7,5,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72301200,"Корисний відпуск-723",12,7,5,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72301700,"Втрати в мережах-723",17,7,5,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72301800,"Виробничі потреби-723",18,7,5,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72303200,"Освітлення , побут",32,7,5,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72303300,"КВУВКГ\"Барводоканал\"",33,7,5,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72304000,"Сільгоспспоживачі-723",40,7,5,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72310400,"БАР ЛВУМГ КС - 19,КС - 37",104,7,5,45,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72310401,"БАР КС - 37 \"Б\"",104,7,5,45,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72314400,"ПАТ \"Барський машзавод\"",144,7,5,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72330004,"ТОВ \"Пфанер-Бар\"",300,7,5,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72330005,"Консервн. з-д Половецький",300,7,5,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72330006,"ТОВБарський птахокомбінат",300,7,5,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72333601,"ТОВ \"Агродар-Бар\"",336,7,5,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72401100,"СОБСТВ. ПОТРЕБЛ. БРУТТО",11,7,9,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72401200,"ПОЛЕЗНЫЙ ОТПУСК",12,7,9,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72401700,"ПОТЕРИ В СЕТЯХ",17,7,9,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72401800,"ПРОИЗВОДСТВЕННЫЕ НУЖДЫ",18,7,9,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72403200,"Освещение,быт.мелкомот.",32,7,9,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72403300,"ДП \"Жмеринкаводоканал\"",33,7,9,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72404000,"СІЛЬГОСПСПОЖИВАЧІ-724",40,7,9,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72404003,"ТОВ \"Жмеринський елеватор",40,7,9,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72430008,"ТОВ \"Демидівський граніт\"",300,7,9,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72489905,"ФО Халабі Акрам",899,7,9,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72501100,"Власне споживання-725",11,7,8,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72501200,"Корисний відпуск-725",12,7,8,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72501600,"Власні потеби",16,7,8,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72501700,"Втрати в мережах-725",17,7,8,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72503200,"Освітлення-725",32,7,8,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72504000,"Сільгоспспоживачі-725",40,7,8,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72504016,"ПОСП \"Нападівське\"",40,7,8,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72514500,"Калинівський машзавод",145,7,8,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72514502,"ФОП  Кулик О.Л.",145,7,8,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72514503,"ПП \"Ларіс\"",145,7,8,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72515001,"ТОВ \"Термінус\" с.Іванів",150,7,8,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530000,"ДП \"Укрспирт\"",300,7,8,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530005,"ПАТ Калин. РП \"Агромаш\"",300,7,8,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530006,"Він. кар'єроуправління",300,7,8,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530007,"ТОВ \"Голландський корм\"",300,7,8,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530012,"ТОВ \"Глікохім\"",300,7,8,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72530016,"ТОВ \"Еко-Сфера\" Калинівка",300,7,8,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72571700,"ТОВ \"Фабрика Дом\"",717,7,8,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72589903,"Кал.в/ч А-1119",899,7,8,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72589912,"В/ч А-3028 \"Ягуар\"",899,7,8,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72601100,"Власне споживання-726",11,7,10,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72601200,"Корисний відпуск-726",12,7,10,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72601700,"Втрати в вмережах-726",17,7,10,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72603200,"Освітлення-726",32,7,10,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72604000,"Сільгоспспоживачі-726",40,7,10,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72604001,"ЗАТ \"Юзефо-Миколаїв. АПК",40,7,10,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72615200,"ПрАТ \"Глухівецький ГЗКК\"",152,7,10,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72615201,"ПАТ \"Жежелів кар'єр\"",152,7,10,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72615202,"ТОВ \"АКВ УКТ\"",152,7,10,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72615210,"ТОВ СОКА Україна",152,7,10,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72630001,"ПрАТ \"СП Агромаш\"",300,7,10,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72630004,"ПАТ\"Козятин мясокомбінат\"",300,7,10,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72630011,"ТОВ \"Осі ФУД Солюшнс\"",300,7,10,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72701100,"Власне споживання-727",11,7,11,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72701200,"Корисний відпуск-727",12,7,11,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72701700,"Втрати в вмережах-727",17,7,11,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72701800,"Виробничі потреби-727",18,7,11,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72703200,"Освітлення і побут-727",32,7,11,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72704000,"Сільгоспспоживачі-727",40,7,11,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72704004,"ПАТ \"ПлемзаводЛітинський\"",40,7,11,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72713100,"ТОВ ВП \"Маріо\"",131,7,11,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72730002,"Літинський молокозавод",300,7,11,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72730005,"Літинський м'ясокомбінат",300,7,11,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72801100,"Власне споживання-728",11,7,12,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72801200,"Корисний відпуск-728",12,7,12,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72801600,"Виробничі потреби-728",16,7,12,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72801700,"Втрати в мережах-728",17,7,12,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72803200,"Освітлення-728",32,7,12,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72804000,"Сільгоспспоживачі-728",40,7,12,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72815200,"Мур.Кур. цегельний з-д",152,7,12,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72830001,"ПрАТ \"Завод \"Регіна\"",300,7,12,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (72833600,"ТзОВ \"Котюжани Зерно\" ХПП",336,7,12,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73101100,"Власне споживання-731",11,7,6,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73101200,"Корисний відпуск-731",12,7,6,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73101600,"Виробничі потреби-731",16,7,6,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73101700,"Втрати в мережах-731",17,7,6,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73103200,"Освітлення і побут-731",32,7,6,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73104000,"Сільгоспспоживачі-731",40,7,6,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73104002,"ТОВ \"Агро Інвест Україна\"",40,7,6,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73104009,"ТОВ \"Агро -Еталон\"",40,7,6,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73110900,"ТОВ \"Транс-Гнівань\"",109,7,6,21,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73110901,"ТОВ \"ВАЛРОМ  Україна\"",109,7,6,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73113503,"ТОВ \"Автопластгума\"",135,7,6,26,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73115200,"ПрАТ \"Гнівань \"СЗБ\"",152,7,6,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73115203,"ТОВ \"Гнівань кар\"єр\"",152,7,6,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73130002,"ПрАТ \"Гніванське ХПП\"",300,7,6,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73130005,"РП \"Агромаш\" Красне",300,7,6,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73189909,"ТОВ \"Рітон\"",899,7,6,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73201100,"Власне споживання-732",11,7,2,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73201200,"Корисний відпуск-732",12,7,2,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73201700,"Втрати в иережах",17,7,2,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73201800,"Виробничі потреби-732",18,7,2,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73203200,"Освітлення-732",32,7,2,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73233600,"ТОВ \"Луї Дрейфус Україна\"",336,7,2,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73289900,"O.L.KAR Фарм-Сервіс",899,7,2,50,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73301100,"Власне споживання-733",11,7,1,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73301200,"Корисний відпуск-733",12,7,1,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73301800,"Госп.потреби",18,7,1,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73303200,"Освітлення і побут-733",32,7,1,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73303300,"ДП \"Хмільникводоканал\"",33,7,1,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73304000,"Сільгоспспоживачі-733",40,7,1,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73304002,"АП НВП \"Візит\" (ст.Радон)",40,7,2,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73330000,"ПрАТ\"АК.Хмільникпрод\"Жда",300,7,1,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73333600,"ПАТ \"Хмільн. елеватор\"",336,7,1,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73333603,"ТзОВ\"Хмільницьке\"(елевато",336,7,1,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73389900,"ДП\"Клін.Сан.\"Хмільник\"",899,7,1,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73389905,"Санаторій \"Поділля\"",899,7,1,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73389907,"Сан.ЦВКС \"Хмільник\"",899,7,1,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73401100,"Власні потреби-734",11,7,3,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73401200,"Корисний відпуск-734",12,7,3,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73401600,"Власні потребиі потреби",16,7,3,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73401700,"Втрати в мережах-734",17,7,3,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73403200,"Освітлення-734",32,7,3,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73404000,"Сільгоспспоживачі-734",40,7,3,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73404002,"ТОВ\"Аграна Фрут Лука\"",40,7,3,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73410400,"РВУ \"Київавтогаз\"",104,7,3,45,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73415200,"Стрижавський кар'єр",152,7,3,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73415207,"ППФ  \"Сітійрон\"",152,7,3,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73430000,"ПП Бенкалюк О.В.",300,7,3,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73430004,"Птахофабрика \"Поділля\"",300,7,3,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73430007,"ПП \"Михалич і Ко\"",300,7,3,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73430008,"ФОП \"Берченко М.М.",300,7,3,46,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73430011,"ПП \"Зерно\"",300,7,3,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73433600,"ТОВ \"ВКХП №2\"",336,7,3,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73441200,"ННН",412,7,3,27,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73473001,"ТОВ \"Шляхбуд\"",730,7,3,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73489908,"ДНЗ Вище проф. уч.№7",899,7,3,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73489919,"ТОВ УПП \"Евромед\"",899,7,3,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73501100,"Власне споживання-735",11,7,4,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73501200,"Корисний відпуск-735",12,7,4,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73501700,"Втрати в мережах-735",17,7,4,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73503200,"Освітлення-735",32,7,4,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73504000,"Сільгоспспоживачі-735",40,7,4,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73515300,"ПП \"Інтертекст\"",153,7,4,36,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73530000,"ТОВ \"Агропослугтрансервіс",300,7,4,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73530001,"ТОВ \"Подільські цукроварн",300,7,4,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73530002,"ТОВ \"Бімол\"",300,7,4,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73533600,"ПрАТ \"Зернопродукт\"",336,7,4,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (73589900,"Мазурівський аграрний ліц",899,7,4,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152101100,"Власні потреби-1521-1521-10",11,15,14,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152101200,"Корисний відпуск-1521",12,15,14,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152101600,"Власні потреби-1521-1521-16",16,15,14,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152101700,"Втрати в мережах-1521",17,15,14,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152103200,"Освітлення -1521",32,15,14,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152104000,"Сільгоспспоживачі-1521",40,15,14,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152115200,"ТОВ\"Будматеріали\"",152,15,14,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152130013,"Птахокомб.\"Бершадський\"",300,15,14,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152133600,"ТОВ Рівненський елеватор\"",336,15,14,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152135700,"Бершадь КРРТ РТПС",357,15,14,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152201100,"Власне споживання-1522",189,15,15,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152201200,"Карисний відпуск",12,15,15,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152201600,"Власні потреби-1522",16,15,15,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152201700,"Втрати в мережах-1522",17,15,15,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152203200,"Освітлення і обут",32,15,15,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152204000,"Сільгоспспоживачі-1522",40,15,15,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152204002,"ТОВ ПК \"Зоря Поділля\"-1522",40,15,15,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152210400,"ПАТ \"Укртрансгаз\" КС-18",104,15,15,45,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152230000,"Гайсинський спиртзавод",300,15,15,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152230003,"Гайсинський молокозавод",300,15,15,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152230006,"ДП ТЕГРА Україна ЛТД",300,15,15,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152230007,"МП \"Алла\"",300,15,15,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152233603,"ТОВ\"Нюсайнс ріел інс.ЛТД\"",336,15,15,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152289905,"ФОП Капула С.І.",899,15,15,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152301100,"Власне споживання брутто",11,15,16,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152301200,"Корисний відпуск-1523",12,15,16,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152301700,"Втрати в мережах-1523",17,15,16,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152303200,"Освітлення-1523",32,15,16,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152304000,"Сільгоспспоживачі-1523",40,15,16,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152310400,"КС - 36",104,15,16,45,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152330004,"Дашів РМЗ",300,15,16,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152330006,"ТОВ \"Люсдорф\"",300,15,16,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152333600,"ТОВ \"Укр. елев. компанія\"",336,15,16,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152401100,"Власне споживання-1524",11,15,17,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152401200,"Корисний відпуск-1524",12,15,17,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152401700,"Втрати в мережах-1524",17,15,17,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152401800,"Виробничі потреби-1524",18,15,17,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152403200,"Освітлення-1524",32,15,17,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152403300,"ДП Крижопільводоканал",33,15,17,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152404000,"Сільгоспспоживачі-1524",40,15,17,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152430000,"ТОВ \"ТЕРРА ФУД\"",300,15,17,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152430007,"ПрАТ ПК \"Поділля\"",300,15,17,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152430010,"ТОВ \"Авіс\"",300,15,17,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152433600,"ТОВ \"Крижоп. елеватор\"",336,15,17,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152501100,"Власне споживання-1525",11,15,18,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152501200,"Корисний відпуск-1525",12,15,18,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152501700,"Втрати в мережах-1525",17,15,18,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152501800,"Виробничі потреби-1525",18,15,18,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152503200,"Освітлення-1525",32,15,18,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152504000,"Сільгоспспоживачі-1525",40,15,18,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152515205,"ДП \"Він.спецкар\"єр\"",152,15,18,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152530006,"ТзОВ \"Яблуневий дар\"",300,15,18,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152533603,"ТОВ \"Млинпром\"",336,15,18,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152589906,"ТОВ \"Він-пелета\"",899,15,18,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152601100,"Власне споживання-1526",11,15,19,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152601200,"Корисний відпуск-1526",12,15,19,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152601700,"Втрати в мережах-1526",17,15,19,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152603200,"Освітлення-1526",32,15,19,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152604000,"Сільгоспспоживачі-1526",40,15,19,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152630021,"ДП \"УВК NEMIROFF\" №630",300,15,19,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152630022,"ТОВ \"Амбар+\"",300,15,19,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152689903,"Санаторій \"Авангард\"",899,15,19,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152701100,"Власне споживання-1527",11,15,20,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152701200,"Корисний відпуск-1527",12,15,20,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152701700,"Втрати в вмережах-1527",17,15,20,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152701800,"Виробничі потреби-1527",18,15,20,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152703200,"Освітлення-1527",32,15,20,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152704000,"Сільгоспспоживачі-1527",40,15,20,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152801100,"Власне споживання,",11,15,21,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152801200,"Корисний відпуск-1528",12,15,21,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152801600,"Виробничі потреби-1528",18,15,21,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152801700,"Втрати в мережах-1528",17,15,21,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152803200,"Освітлення і побут-1528",32,15,21,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804000,"Сільгоспспоживачі-1528",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804001,"СФГ \"Зірка\" с.Малинки",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804002,"СТОВ \"Зоря\" с. Андрушівка",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804003,"СТОВ \"Росія\" с.Станилівка",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804004,"СФГ \"Бухнівське\"",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804005,"СФГ \"Дружба-Л\" с.Гончиця",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804006,"СФГ \"Лан-П\"с.Дзюньків",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804007,"ФГ \"Колотуцького\"",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804008,"ТОВ \"Союз-Агро-Пром\"",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804009,"СТОВ \"Дніпро\" с.Мончин",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804010,"ТОВ \"Погребищенське\"",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804011,"ТОВ Фірма \"Руна\"",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152804012,"ПП \"Ольвія\"с. Мончин",40,15,21,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152830001,"ТОВ ПК \"Зоря Поділля\"-1528-1528-41--65",300,15,21,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152830003,"ТОВ ПК \"Зоря Поділля\"-1528-1528-41--42",300,15,21,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152833600,"ТОВ \"Зерногрупа ЛТД\"",336,15,21,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152833601,"ТОВ \"Ржевуська Млин\"",336,15,21,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152873000,"Райавтодор",730,15,21,47,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152901100,"Власне споживання-1529",11,15,22,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152901200,"Корисний відпуск-1529",12,15,22,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152901600,"Виробничі потреби-1529",16,15,22,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152901700,"Втрати в мережах-1529",17,15,22,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152903200,"Освітлення і побут-1529",32,15,22,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (152904000,"Сільгоспспоживачі-1529",40,15,22,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153101100,"Власне споживання-1531",11,15,23,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153101200,"Корисний відпуск-1531",12,15,23,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153101700,"Втрати в мережах-1531",17,15,23,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153103200,"Освітлення і побут-1531",32,15,23,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153104000,"Сільгоспспоживачі-1531",40,15,23,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153115002,"ФОП Руда Л.Г.",150,15,23,29,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153130002,"ТОВ\"Подільські цукроварні",300,15,23,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153130003,"Тульчин м'ясокомбінат",300,15,23,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153189901,"ТУ ДП \"Укрветсанзавод\"",899,15,23,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153201100,"Власне споживання-1532",11,15,24,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153201200,"Корисний відпуск-1532",12,15,24,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153201600,"Виробничі потреби-1532",16,15,24,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153201700,"Втрати в мережах-1532",17,15,24,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153203200,"Освітлення і побут-1532",32,15,24,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153203300,"Вапнярка водоканал",33,15,24,49,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153204000,"Сільгоспспоживачі-1532",40,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153230000,"ВП \"Томашпільцукор\"",300,15,24,38,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153230001,"ТОВ \"ТЕРРА-ФУД\"",300,15,24,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153235700,"ПрАТ ПК\"Поділля\" \"Колос\"",357,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153235701,"ПрАТ ПК\"Поділля\"с.Ялтан.",357,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153238000,"Торговий дім Фінпром",380,15,24,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153289900,"ПСП \"Перемога\"",899,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153289903,"СФГ \"Вікторія\"",899,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153289904,"ПП \"Фатіма -Агро\"",899,15,24,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153301100,"Власне споживання-1533",11,15,25,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153301200,"Корисний відпуск-1533",12,15,25,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153301700,"Втрати в мережах-1533",17,15,25,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153303200,"Освітлення-1533",32,15,25,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153304000,"Сільгоспспоживачі-1533",40,15,25,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153310101,"Ладижин ЗБК",101,15,25,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153315201,"КП \"Буддеталь\"",152,15,25,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153318900,"ДП \"ЕНЗІМ\"",189,15,25,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153330000,"Тростянецький спиртзавод",300,15,25,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153330002,"Тростянецький мясокомбіна",300,15,25,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153330008,"ТОВ \"Він. птахофабрика\"",300,15,25,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153335000,"Щебневий завод",350,15,25,32,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153389900,"Ладижинська ТЕС",899,15,25,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153401100,"Власне споживання-1534",11,15,26,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153401200,"Корисний відпуск-1534",12,15,26,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153401700,"Втрати в мережах-1534",17,15,26,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153403200,"Освітлення і побут-1534",32,15,26,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153404000,"Сільгоспспоживачі-1534",40,15,26,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153501100,"Власні потреби-1535",11,15,28,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153501200,"Корисний відпуск-1535",12,15,28,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153501600,"Виробничі потреби-1535",16,15,28,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153501700,"Втрати в мережах-1535",17,15,28,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153503200,"Освітлення і побут-1535",32,15,28,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153504000,"Сільгоспспоживачі-1535",40,15,28,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153512200,"Приладобудівний завод",122,15,28,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153589900,"Упр.меліорат. с-м",899,15,28,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153701100,"Власне  споживання",11,15,27,1,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153701200,"Корисний відпуск-1537",12,15,27,8,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153701600,"Власні потреби-1537",16,15,27,7,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153701700,"Втрати в мережах-1537",17,15,27,6,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153703200,"Освітлення і побут-1537",32,15,27,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153704000,"Сільгоспспоживачі-1537",40,15,27,41,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153715200,"Оратів \"Агромаш\"",152,15,27,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153715201,"ТОВ \"Агробуд\"",152,15,27,28,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153730001,"ТОВ \"Серволюкс\"",300,15,27,39,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153733600,"ТОВ \"Воїнське ХПП\"",336,15,27,40,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153789900,"Оратів ЦРЛ",899,15,27,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (153789902,"ПАТ\"Укртелеком\"",899,15,27,51,1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");	
+
+
+	
+=========================================================================================================================================================================
+id,kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at
+
+
+
+
+select kod_rem from rems where id=
+
+select concat('72101100;"Власне споживання, брутто"; 0; 0;',(select id from rems where kod_rem=721),';',
+		(select id from otrs where kod_otr=10 and kod_podotr=10),'; 1; "2019-09-23 15:14:50"; "2019-09-23 15:14:50";');
+select concat('72101100;"Власне споживання, брутто"; 0; 0;',(select id from rems where kod_rem=721),';',
+		(select id from otrs where kod_otr=17 and kod_podotr=17),'; 1; "2019-09-23 15:14:50"; "2019-09-23 15:14:50";');
+
+
+select concat('insert into consumers (kod_consumer,name_consumer,kod_grp,kod_seti,rem_id,otr_id,user_id,created_at,updated_at) 
+	values (old.kod_consumer,',old.nam_consumer,', old.kod_grp, old.kod_seti,(select id from rems where kod_rem=old.kod_rem),(select id from otrs where kod_otr=old.kod_otr and kod_podotr=old.kod_podotr), 1,"2019-09-23 15:14:50", "2019-09-23 15:14:50");')
+from zam_consumer old
+

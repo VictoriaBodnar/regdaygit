@@ -1,8 +1,15 @@
 ﻿To do list:
+
+To change font (numbers are dancing)+
+To make final maket.
+To align all form to left.
+
 1.В форме загрузки -укр мова
 2.to make FileController some clear
 4.Function of deleting graf for date.
-FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DEIETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
 
 git status 
 
@@ -159,7 +166,7 @@ https://laravelcollective.com/docs/5.4/html
 Порядок подготовки файла загрузки режимных измерерий.
 1.Экселевский файл сохранить как csv с разделителями запятыми.
 2.Открыть csv при помощи Excel. Изменить формат даты на yyyy-mm-dd
-3.Открыть csv при помощи Блокнот заменить ; на ,
+3.Открыть csv при помощи Блокнот заменить ; на , и выставить кодировку UTF-8
 
 Проверки при загрузке:
 Поле даты date_zamer берем значение поля из первой строки и проверяем, что оно существует в табл pasps, и далее берем 
