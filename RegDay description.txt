@@ -1,15 +1,12 @@
 ﻿To do list:
 
-To change font (numbers are dancing)+
-To make final maket.
-To align all form to left.
+1. Recovering password don`t working
+2. To make final maket.
+3.В форме загрузки -укр мова
+4.to make FileController some clear
+5.Function of deleting graf for date.
 
-1.В форме загрузки -укр мова
-2.to make FileController some clear
-4.Function of deleting graf for date.
-
-
-FileController - need remove row - \DB::table('grafs')->delete();///THIS ROW NEED DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-----------------------------------------------------------------------------
 
 git status 
 
