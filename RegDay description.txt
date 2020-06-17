@@ -1,7 +1,8 @@
 ﻿To do list:
 
-1. Recovering password don`t working
-2. To make final maket.
+0.Request before delete
+1.Recovering password don`t working
+2.To make final maket.
 3.В форме загрузки -укр мова
 4.to make FileController some clear
 5.Function of deleting graf for date.

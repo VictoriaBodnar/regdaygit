@@ -12,9 +12,9 @@
     <header class="w3-container w3-theme w3-padding">
         <div class="w3-cell-row w3-theme">
             <div class="w3-cell">
-                <h2>{{ config('app.name') }}</h2>
-            </div>
-            <div class="w3-cell w3-right">
+                <h2><a href="/" class="w3-btn w3-tooltip">{{ config('app.name') }}<span class="w3-text w3-tag w3-grey w3-small" style="position:absolute;left:0;top:1px">на головну</span></a></h2>
+             </div>
+             <div class="w3-cell w3-right">
                @if (Route::has('login'))
                       @if (Auth::check())
                           <div class="w3-dropdown-hover">
@@ -39,19 +39,21 @@
             </div>
         </div>    
     </header>
-
-    <div class="w3-rest w3-white w3-display-container" style="min-height:460px"> <!--      style="min-height:460px"-->
+    
+    <div class="w3-cell-row w3-white w3-display-container" style="min-height:860px"> <!--      style="min-height:460px"-->
       <!--<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
       <h2>London</h2>                              style="min-height:460px"
       <p>London is the capital city of England. It is the most populous city in the United Kingdom</p>
       -->
       @yield('content')
-    </div> 
+     </div>
+     
 
     <footer class="w3-container w3-theme">
       <h5>{{ config('app.company') }}</h5>
       <p class="w3-opacity">{{ config('app.subtitle') }}</p>
     </footer>
+
     <!--  ************************************************************************************************************************-->
         
     <!-- Scripts -->
