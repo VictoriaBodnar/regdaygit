@@ -6,6 +6,20 @@
 3.В форме загрузки -укр мова
 4.to make FileController some clear
 5.Function of deleting graf for date.
+6.Input Calendar for adding date.
+7.Upload xlsx format
+8.Check upload ASCII
+
+php artisan config:cache
+php artisan cache:clear
+php artisan config:clear
+
+
+php artisan view:clear 
+php artisan route:clear 
+php artisan config:clear 
+php artisan cache:clear 
+php artisan config:cache
 
 -----------------------------------------------------------------------------
 
@@ -230,7 +244,36 @@ Require ip 192.168.1.101
 Запуск сервера Laravel с доступом по лок.сети:
 php artisan serve --host 0.0.0.0 
 
+---------Password reset-------------
+1.Не работает через smtp.gmail.com
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=winterlink11@gmail.com	
+MAIL_PASSWORD=protokol1212
+MAIL_ENCRYPTION=tls
+Ошибка :Connection could not be established with host smtp.gmail.com [A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+#10060]
+2.Запустить командную строку от имени администратора
+3.Включить telnet:    pkgmgr /iu:”TelnetClient”
+4.Проверить соединение: telnet smtp.gmail.com 587
+5.Из дома ответ такой: Connecting To smtp.gmail.com...Could not open connection to the host, on port 587: Connect failed
+  Из офиса ответ такой: 220 smtp.gmail.com ESMTP i2sm2010418ljn.109 - gsmtp
 
+********
+Always remember MAIL_DRIVER=smtp work for localhost but in case of Server you have make change MAIL_DRIVER=sendmail
+*********
+Вариант Mailgun
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailgun.org
+MAIL_PORT=465
+MAIL_USERNAME=postmaster@sandbox924344ae8fc249c5a5039e1b9b948a7b.mailgun.org	
+MAIL_PASSWORD=932e030488b69d6224cc2609d77fba10-87c34c41-2ff580d0
+MAIL_ENCRYPTION=tls
+
+та же фигня Connecting To smtp.mailgun.org...Could not open connection to the host, on port 587: Connect failed
+Порты закрыты провайдером.
 
 
  

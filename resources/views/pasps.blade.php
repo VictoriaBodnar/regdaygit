@@ -15,7 +15,7 @@
                 <div class="w3-row w3-section">
                     <div class="w3-col w3-margin-right" style="width:15%"><label>Дата виміру</label></div>
                     <div class="w3-rest">
-                        <input type="text" name="date_zamer" id="pasp-date_zamer" class="w3-input w3-border w3-round" value="{{ old('pasp') }}">
+                        <input type="text" name="date_zamer" id="pasp-date_zamer" class="w3-input w3-border w3-round" value="{{ old('pasp') }}" placeholder="рррр-мм-дд" required>
                     </div>
                 </div>
                 @if (session('alert'))

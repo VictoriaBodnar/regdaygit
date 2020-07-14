@@ -81,6 +81,7 @@ use App\Http\Requests;
   });*/
 
   Route::delete('/consumer_del/{consumer}','ConsumerController@delete');
+  //Route::get('/consumer_del/{consumer}','ConsumerController@delete');
   Route::get('/consumer_edit/{consumer}', 'ConsumerController@edit');
   Route::put('/consumer_edit/{consumer}','ConsumerController@update');
   //Route::put('/PATCH/consumer_edit/{consumer}','ConsumerController@update');
