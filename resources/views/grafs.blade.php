@@ -3,13 +3,16 @@
 <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
 <div class="w3-container">
     <div class="w3-cell-row w3-padding-8">
-        <h3>Режимні виміри за період</h3>
         <div class="w3-half">
             <!-- Display Validation Errors -->
             @include('common.errors')
-            <a class="w3-button w3-round" href="{{ url('graf_add') }}">Додати запис</a>
+            <div class="w3-cell-row">
+          <div class="w3-cell"><h3>Режимні виміри за період</h3></div>
+          <div class="w3-cell w3-right"><a class="w3-button w3-round w3-margin-top w3-green" href="{{ url('graf_add') }}"><i class="fa fa-plus"></i>&nbsp;Додати запис</a></div>
+        </div>
             <form class="w3-container w3-card-4 w3-theme" method="POST" action="{{ url('graf')}}">
                 {{ csrf_field() }}
+                <h3>Вибір даних</h3><hr>
                 <div class="w3-section">
                     <div class="w3-col w3-margin-right" style="width:15%"><label>Дата</label></div>
                         <div class="w3-rest">
@@ -38,11 +41,6 @@
                             </select>
                         </div>
                 </div>
-                @if (session('alert'))
-                    <div class="w3-section w3-green w3-round" id="success-alert"><!--w3-container w3-red -->
-                        <h3>{{ session('alert') }}</h3>
-                    </div>
-                @endif    
                 <div class="w3-section">
                     <div class="w3-col w3-margin-right" style="width:15%"><label>&nbsp;</label></div>
                         <div class="w3-rest">
@@ -53,7 +51,7 @@
         </div>
     </div>
     @if (session('alert'))
-        <div class="w3-section w3-green w3-round" id="success-alert">
+        <div class="w3-section w3-padding-16 w3-green w3-round" id="success-alert">
             {{ session('alert') }}
         </div>
     @endif
@@ -74,11 +72,11 @@
         </div>
     @endif
     @if (count($grafs) > 0)
-        <div class="w3-padding-16 w3-responsive w3-card-4">
+        <div class="w3-padding-8 w3-responsive w3-card-4">
             <div class="w3-section w3-text-blue">
-                Режимні виміри за: {{$selected_date}} тип виміру: {{$selected_type}}
+                <h3>Режимні виміри за: {{$selected_date}} тип виміру: {{$selected_type}}</h3>
             </div>
-            <table class="w3-table w3-striped w3-bordered">
+             <table class="w3-table w3-striped w3-bordered">
                 <thead>
                     <tr class="w3-theme">
                         <th>Код споживача</th>
@@ -88,6 +86,7 @@
                         <th>a1</th><th>a2</th><th>a3</th><th>a4</th><th>a5</th><th>a6</th><th>a7</th><th>a8</th><th>a9</th><th>a10</th>
                         <th>a11</th><th>a12</th><th>a13</th><th>a14</th><th>a15</th><th>a16</th><th>a17</th><th>a18</th><th>a19</th><th>a20</th><th>a21</th><th>a22</th><th>a23</th><th>a24</th><th>a_cyt</th>
                         <th>Ким внесено</th>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -129,18 +128,17 @@
                                 <form action="{{ url('graf_del/'.$graf->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit" class="w3-button w3-round w3-red w3-hover-theme" onclick="return confirm('Дійсно бажаєте вилучити рядок? {{ $graf->kod_consumer }} ')" style="font-weight:900;"><i class="fa fa-trash"></i>Вилучити
+                                    <button type="submit" class="w3-button w3-round w3-red w3-hover-theme" onclick="return confirm('Дійсно бажаєте вилучити рядок? {{ $graf->kod_consumer }} ')"><i class="fa fa-trash"></i>Вилучити
                                     </button>                                                   
                                 </form>
                             </div></td>
                             <td><div>    
                                 <a class="w3-button w3-round w3-blue w3-hover-theme" href="{{ url('graf_edit/'.$graf->id) }}"><i class="fa fa-edit"></i>Редагувати</a>
-                            </td>
+                            </div></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            
         </div>
     @endif
 </div>    

@@ -125,6 +125,8 @@ Route::put('/graf_edit/{graf}','GrafController@update');
 Route::get('/graf_add', 'GrafController@add');
 Route::post('/graf_add', 'GrafController@store');
 
+Route::get('/trespo',function(){return view('testResposive');});
+
 
 
 

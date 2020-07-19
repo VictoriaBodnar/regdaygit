@@ -40,15 +40,17 @@
         </div>    
     </header>
     
-    <div class="w3-cell-row w3-white w3-display-container" style="min-height:860px"> <!--      style="min-height:460px"-->
+    <!--1вариант <div class="w3-cell-row w3-white w3-display-container" style="min-height:860px">--> <!--      style="min-height:460px"-->
+      <div class="w3-container" style="min-height:860px"> 
+      <div class="w3-responsive"> 
       <!--<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
       <h2>London</h2>                              style="min-height:460px"
       <p>London is the capital city of England. It is the most populous city in the United Kingdom</p>
       -->
       @yield('content')
-     </div>
+      </div>
+      </div>
      
-
     <footer class="w3-container w3-theme">
       <h5>{{ config('app.company') }}</h5>
       <p class="w3-opacity">{{ config('app.subtitle') }}</p>

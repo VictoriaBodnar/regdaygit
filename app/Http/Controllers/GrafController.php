@@ -121,7 +121,8 @@ class GrafController extends Controller
         $graf->user_id = Auth::user()->id;
         $graf->save();
         $lastInsertedId = $graf->id;
-        return redirect('/graf/'.$graf->date_zamer.'/'.$lastInsertedId)->with('alert', 'Додано!');
+        //return redirect('/graf/'.$graf->date_zamer.'/'.$lastInsertedId)->with('alert', 'Додано!');
+        return redirect('/graf/'.$graf->date_zamer)->with('alert', 'Додано!');
         
   } 
   
