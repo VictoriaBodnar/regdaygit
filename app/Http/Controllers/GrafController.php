@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ValidSaveGraf;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Input;
 
 
 
@@ -31,7 +33,7 @@ class GrafController extends Controller
   }
 
 
-   public function show(Request $request, $date_zamer = null, $id = null, $type_zamer = null)
+   public function show(Request $request, $date_zamer = null, $type_zamer = null, $id = null, $page = null)
   {
     //return  $type_zamer; 
     $getOneId='';  
@@ -55,14 +57,15 @@ class GrafController extends Controller
     }
     if (!empty($id)) { $getOneId=" and g.id=".$id; }
 
-    $grafs = DB::select("SELECT g.id, g.kod_consumer, c.name_consumer, g.date_zamer, g.type_zamer, g.a1, g.a2, g.a3, g.a4, g.a5, g.a6, g.a7, g.a8, g.a9, g.a10, g.a11, g.a12, g.a13, g.a14, g.a15, g.a16, g.a17, g.a18, g.a19, g.a20, g.a21, g.a22, g.a23, g.a24, g.a_cyt, g.user_id, g.created_at, g.updated_at,  t.name_type, u.name u_name
+    $sql = DB::select("SELECT g.id, g.kod_consumer, c.name_consumer, g.date_zamer, g.type_zamer, g.a1, g.a2, g.a3, g.a4, g.a5, g.a6, g.a7, g.a8, g.a9, g.a10, g.a11, g.a12, g.a13, g.a14, g.a15, g.a16, g.a17, g.a18, g.a19, g.a20, g.a21, g.a22, g.a23, g.a24, g.a_cyt, g.user_id, g.created_at, g.updated_at,  t.name_type, u.name u_name
       FROM grafs g
       left join consumers c on g.kod_consumer=c.kod_consumer
       left join types t on g.type_zamer=t.id
       LEFT JOIN  users u on g.user_id = u.id
       WHERE g.date_zamer='{$date_zamer}' and g.type_zamer='{$type_zamer}' {$getOneId}
       order by g.date_zamer, g.kod_consumer asc");//'2017-12-20'
-    
+
+    $grafs = $this->arrayPaginator($sql, $request);
 
     return view('grafs', [
       'grafs' => $grafs,
@@ -77,9 +80,19 @@ class GrafController extends Controller
     }else{
       return $grafs;
     }*/
-
    
    } 
+
+public function arrayPaginator($array, $request)
+{
+    $page = Input::get('page', 1);
+    $perPage = 10;
+    $offset = ($page * $perPage) - $perPage;
+
+    return new LengthAwarePaginator(array_slice($array, $offset, $perPage, true), count($array), $perPage, $page,
+        ['path' => $request->url(), 'query' => $request->query()]);
+}
+
 
    public function store(ValidSaveGraf $request)
   {
@@ -232,5 +245,30 @@ class GrafController extends Controller
       return redirect('/graf')->with('alert', 'Вилучено!');
       
     }
+    public function setDeleteBlock()
+    {
 
+       $pasps = Pasp::all();//дата виміру
+       $types = DB::table('types')->get();//тип виміру
+       return view('delGrafsBlock', compact('pasps', 'types'));
+
+      //$graf->delete();
+
+      //return redirect('/graf')->with('alert', 'Вилучено!');
+      
+    }
+  public function deleteBlock(Request $request)
+    {
+      $date_zamer = $request->date_zamer; 
+      $type_zamer = $request->type_zamer; 
+    
+      //$graf->delete();
+      //dd('deleteBlock has been running......'.$request->date_zamer);
+      //print_r($request->all());
+      $sql = DB::delete("delete FROM grafs WHERE date_zamer='{$date_zamer}' and type_zamer='{$type_zamer}'"); 
+      //print_r($sql);
+
+      return redirect('/graf/'.$date_zamer.'/'.$type_zamer)->with('alert', 'Вилучено '.$sql.' рядки!');
+      
+    }
 }

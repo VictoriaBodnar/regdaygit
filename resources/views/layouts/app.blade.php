@@ -17,20 +17,7 @@
              <div class="w3-cell w3-right">
                @if (Route::has('login'))
                       @if (Auth::check())
-                          <div class="w3-dropdown-hover">
-                            <button class="w3-button w3-theme ">
-                              {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-                                <a href="{{ route('logout') }}" class="w3-bar-item w3-button w3-theme" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Вихід </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-                                            {{ csrf_field() }}
-                                </form>
-                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 1</a>
-                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 2</a>
-                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 3</a>
-                            </div>
-                          </div>
+                         <a href="{{ url('/') }}">На головну</a>
                         @else
                           <a href="{{ url('/login') }}">Увійти</a>
                           <a href="{{ url('/register') }}">Зареєструватись</a>
@@ -41,14 +28,14 @@
     </header>
     
     <!--1вариант <div class="w3-cell-row w3-white w3-display-container" style="min-height:860px">--> <!--      style="min-height:460px"-->
-      <div class="w3-container" style="min-height:860px"> 
-      <div class="w3-responsive"> 
+      <div class="w3-container w3-responsive" style="min-height:860px"> 
+     
       <!--<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
       <h2>London</h2>                              style="min-height:460px"
       <p>London is the capital city of England. It is the most populous city in the United Kingdom</p>
       -->
       @yield('content')
-      </div>
+     
       </div>
      
     <footer class="w3-container w3-theme">
@@ -61,6 +48,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/FileSaver.js') }}"></script>
     <!--<script src="{{asset('js/jquery-3.1.1.min.js')}}"></script> -->
     <!--<script type="text/javascript" src="<?php echo asset('assets/js/jquery-3.1.1.min.js'); ?>"></script> -->
     <script>
@@ -68,7 +56,34 @@
             $("#success-alert").fadeTo(1000, 0.4).slideUp(500, function(){
             $("#success-alert").slideUp(500);
             });
-     });       
+     }); 
+     $("#save-btn").click(function() { 
+          var blob = new Blob([$("#saveHtml")[0].innerHTML], {type: "text/plain;charset=utf-8"});
+          saveAs(blob, "maket.html");
+     }); 
+     function saveMaket(date, type) {
+          alert('eee');
+          var blob = new Blob([date + ' ' + type + ' ' + $("#rrt")[0].innerHTML], {type: "text/plain;charset=utf-8"});
+          saveAs(blob, "testfile1.html");
+
+     }    
+
     </script>
 </body>
 </html>
+ <!--var blob = new Blob([$("#rrt")[0].innerText], {type: "text/plain;charset=utf-8"});
+          saveAs(blob, "testfile1.txt"); -->
+<!--  alert ($(this));
+         console.log($(this).html);
+         console.log($("#rrt")[0].innerText);-->
+
+
+          <!--var blob = new Blob([$("#rrt")[0].innerHTML], {type: "text/plain;charset=utf-8"});
+          saveAs(blob, "testfile1.txt"); -->
+
+         <!-- $(document).on('click','.delete',function(){
+         let id = $(this).attr('data-id');
+         $('#id').val(id);
+    });-->
+
+

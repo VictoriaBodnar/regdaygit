@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/msgstyles.css') }}" rel="stylesheet" type="text/css" >
-<div class="w3-container">
+<div class="w3-container w3-responsive">
     <div class="w3-cell-row w3-padding-8">
         <div class="w3-half">
             <!-- Display Validation Errors -->
             @include('common.errors')
             <div class="w3-cell-row">
           <div class="w3-cell"><h3>Режимні виміри за період</h3></div>
-          <div class="w3-cell w3-right"><a class="w3-button w3-round w3-margin-top w3-green" href="{{ url('graf_add') }}"><i class="fa fa-plus"></i>&nbsp;Додати запис</a></div>
+          <div class=" w3-container w3-cell w3-right"><a class="w3-button w3-round w3-margin-top w3-green" href="{{ url('graf_add') }}"><i class="fa fa-plus"></i>&nbsp;Додати запис</a></div>
+          <div class="w3 container w3-cell w3-right"><a class="w3-button w3-round w3-margin-top w3-red" href="{{ url('graf_del_block') }}"><i class="fa fa-trash"></i>&nbsp;Видалення даних</a></div>
         </div>
             <form class="w3-container w3-card-4 w3-theme" method="POST" action="{{ url('graf')}}">
                 {{ csrf_field() }}
@@ -73,9 +74,10 @@
     @endif
     @if (count($grafs) > 0)
         <div class="w3-padding-8 w3-responsive w3-card-4">
-            <div class="w3-section w3-text-blue">
-                <h3>Режимні виміри за: {{$selected_date}} тип виміру: {{$selected_type}}</h3>
-            </div>
+             <div class="w3-section w3-text-blue">
+                <div class="w3-col"><h3>Режимні виміри за: {{$selected_date}} тип виміру: {{$selected_type}} </h3></div>
+                <div class="w3-col">{{ $grafs->links('paginator') }}</div>
+             </div>
              <table class="w3-table w3-striped w3-bordered">
                 <thead>
                     <tr class="w3-theme">

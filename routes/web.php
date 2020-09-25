@@ -11,17 +11,20 @@
 |
 */
 
+
+use App\Consumer;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
 Route::get('/', function () {
     //return view('oldwelcome');
     return view('welcome');
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+Route::get('/catalog', 'HomeController@catalog');
 
-use App\Consumer;
-use Illuminate\Http\Request;
-use App\Http\Requests;
 
   /**
    * Вывести панель с со списком потребителей
@@ -104,9 +107,9 @@ use App\Http\Requests;
   PUT     /PATCH /rems/{rem}      update    rems.update
   DELETE  /rems/{rem}             destroy   rems.destroy*/
 
-  Route::resource('otrs', 'OtrController');
-  Route::resource('pasps', 'PaspController');
-  Route::resource('types', 'TypeController');
+Route::resource('otrs', 'OtrController');
+Route::resource('pasps', 'PaspController');
+Route::resource('types', 'TypeController');
   
 
   /*Route::get('/editPasps', function () {
@@ -118,14 +121,31 @@ Route::post('import-csv-excel',array('as'=>'import-csv-excel','uses'=>'FileContr
 Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'FileController@downloadExcelFile'));
 //Route::get('/graf/{graf?}/{id?}', 'GrafController@show');
 //Route::post('/graf/{graf?}/{id?}','GrafController@show');
-Route::match(['get', 'post'], '/graf/{graf?}/{id?}', 'GrafController@show');
+//Route::match(['get', 'post'], '/graf/{graf?}/{id?}', 'GrafController@show');
+
+
+Route::match(['get', 'post'], '/graf/{date?}/{type?}/{id?}', 'GrafController@show');
+
 Route::delete('/graf_del/{graf}','GrafController@delete');
 Route::get('/graf_edit/{graf}', 'GrafController@edit'); 
 Route::put('/graf_edit/{graf}','GrafController@update');
 Route::get('/graf_add', 'GrafController@add');
 Route::post('/graf_add', 'GrafController@store');
+Route::match(['get', 'post'], '/maket', 'MaketController@maketMaker');
 
 Route::get('/trespo',function(){return view('testResposive');});
+
+Route::get('password/reset/{token?}', 'Auth\ForgotPasswordController@showLinkRequestForm');
+//Route::post('password/reset/{token?}', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::delete('/graf_del_block/{graf?}','GrafController@deleteBlock');
+Route::get('/graf_del_block', 'GrafController@setDeleteBlock'); 
+
+
+//Password Reset Routes...
+/*Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');*/
 
 
 

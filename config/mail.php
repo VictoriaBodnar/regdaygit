@@ -29,8 +29,8 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-    //'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,8 +57,9 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'example'),
+        //~~~'address' => env('MAIL_FROM_ADDRESS', 'winterlink11@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'asu_bodnar@voe.com.ua'),
+        'name' => env('MAIL_FROM_NAME', 'Victoria Bodnar'),
     ],
 
     /*
@@ -72,7 +73,8 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    //~~~'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', ''),
 
     /*
     |--------------------------------------------------------------------------

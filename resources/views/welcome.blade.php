@@ -13,10 +13,6 @@
 <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
   <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
   <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button">Link 4</a>
 </nav>
  
  <!-- Header -->
@@ -28,7 +24,20 @@
     <div class="w3-cell w3-right">
        @if (Route::has('login'))
               @if (Auth::check())
-                  <a href="{{ url('/') }}">Home</a>
+                   <div class="w3-dropdown-hover">
+                            <button class="w3-button w3-theme ">
+                              {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                                <a href="{{ route('logout') }}" class="w3-bar-item w3-button w3-theme" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Вихід </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                                            {{ csrf_field() }}
+                                </form>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 1</a>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 2</a>
+                              <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 3</a>
+                            </div>
+                          </div>
                 @else
                   <a href="{{ url('/login') }}">Увійти</a>
                   <a href="{{ url('/register') }}">Зареєструватись</a>
@@ -70,7 +79,7 @@
   <div class="w3-card w3-container" style="min-height:460px">
   
   <h3>Довідники</h3><br>
-  <a href="/home" class="fa fa-gears w3-margin-bottom w3-text-theme w3-button" style="font-size:120px"></a>
+  <a href="/catalog" class="fa fa-gears w3-margin-bottom w3-text-theme w3-button" style="font-size:120px"></a>
   <p>Built-in responsiveness</p>
   <p>Mobile first fluid grid</p>
   <p>Fits any screen sizes</p>
@@ -93,7 +102,7 @@
 <div class="w3-quarter">
   <div class="w3-card w3-container" style="min-height:460px">
   <h3>Експорт макету</h3><br>
-  <a href="#" class="fa fa-download w3-margin-bottom w3-text-theme w3-button" style="font-size:120px"></a>
+  <a href="/maket" class="fa fa-download w3-margin-bottom w3-text-theme w3-button" style="font-size:120px"></a>
   <p>Standard CSS only</p>
   <p>Easy to learn</p>
   <p>No need for jQuery</p>
