@@ -7,12 +7,16 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<?php
+    $linkTheme = "https://www.w3schools.com/lib/w3-theme-".Config::get('app.colortheme').".css";
+?>
+<link rel="stylesheet" href={{ $linkTheme }}>
 
 <body>
     <header class="w3-container w3-theme w3-padding">
         <div class="w3-cell-row w3-theme">
             <div class="w3-cell">
-                <h2><a href="/" class="w3-btn w3-tooltip">{{ config('app.name') }}<span class="w3-text w3-tag w3-grey w3-small" style="position:absolute;left:0;top:1px">на головну</span></a></h2>
+                <h2><a href="/" class="w3-btn w3-tooltip">{{ config('app.name') }} {{ config('app.colortheme') }} <span class="w3-text w3-tag w3-grey w3-small" style="position:absolute;left:0;top:1px">на головну</span></a></h2>
              </div>
              <div class="w3-cell w3-right">
                @if (Route::has('login'))

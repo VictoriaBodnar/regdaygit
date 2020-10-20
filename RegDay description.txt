@@ -10,7 +10,6 @@ To do list:
 8.Check upload ASCII
 /////////////
 0.Request before delete
-1.Recovering password don`t working
 4.to make FileController some clear
 5.Function of deleting graf for date.
 6.Доступ к изменению данніх - только Тамаре

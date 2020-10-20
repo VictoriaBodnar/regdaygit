@@ -7,14 +7,33 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">-->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<div id="changeTheme"></div>
+<?php
+    $linkTheme = "https://www.w3schools.com/lib/w3-theme-".Config::get('app.colortheme').".css";
+?>
+<link rel="stylesheet" href={{ $linkTheme }}>
+
 <body>
 
 <!-- Side Navigation -->
 <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
-  <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
-  <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+  <a href="{{ url('/changeTheme/green') }}" class="w3-bar-item w3-button w3-green">Green</a>
+  <a href="{{ url('/changeTheme/red') }}" class="w3-bar-item w3-button w3-red">Red</a>
+  <a href="{{ url('/changeTheme/blue') }}" class="w3-bar-item w3-button w3-blue">Blue</a>
+  <a href="{{ url('/changeTheme/blue-grey') }}" class="w3-bar-item w3-button w3-blue-grey">Blue Grey</a>
+  <a href="{{ url('/changeTheme/teal') }}" class="w3-bar-item w3-button w3-teal">Teal</a>
+  <a href="{{ url('/changeTheme/yellow') }}" class="w3-bar-item w3-button w3-yellow">Yellow</a>
+  <a href="{{ url('/changeTheme/orange') }}" class="w3-bar-item w3-button w3-orange">Orange</a>
+  <a href="{{ url('/changeTheme/indigo') }}" class="w3-bar-item w3-button w3-indigo">Indigo</a>
+  <!--<button class="w3-bar-item w3-button w3-text-red" onclick="paintMe('red')">Red</i></button>
+  <button class="w3-bar-item w3-button w3-text-blue" onclick="paintMe('blue')">Blue</i></button>
+  <button class="w3-bar-item w3-button w3-text-blue-grey" onclick="paintMe('blue-grey')">Blue Grey</i></button>
+  <button class="w3-bar-item w3-button w3-text-teal" onclick="paintMe('teal')">Teal</i></button>
+  <button class="w3-bar-item w3-button w3-text-yellow" onclick="paintMe('yellow')">Yellow</i></button>
+  <button class="w3-bar-item w3-button w3-text-orange" onclick="paintMe('orange')">Orange</i></button>
+  <button class="w3-bar-item w3-button w3-text-indigo" onclick="paintMe('indigo')">Indigo</i></button>-->
+  <button class="w3-bar-item w3-button w3-theme" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
 </nav>
- 
  <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
   <div class="w3-cell-row w3-theme">
@@ -50,7 +69,7 @@
   <h1 class="w3-xxxlarge w3-animate-bottom">{{ config('app.name') }}</h1>
     <div class="w3-padding-32">
       <!--<button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:100;">Завантаження даних</button>-->
-      <a href="/import-export-csv-excel" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:100;">Завантаження даних</a>
+      <a href="/import-export-csv-excel" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:100;">Завантаження даних  {{ config('app.colortheme') }}</a>
     </div>
   </div>
 </header>
@@ -574,6 +593,13 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+function paintMe(color) {
+    //document.getElementById("themeasset").style.display = "none";
+  //document.getElementById("ct").innerHTML = "Paragraph changed!";
+  var a = document.getElementById('changeTheme');
+      a.innerHTML = '<link id="ct" rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-'+color+'.css">';
+      //a.href = "https://www.w3schools.com/lib/w3-theme-blue.css";
+  }
 
 // Tabs
 function openCity(evt, cityName) {

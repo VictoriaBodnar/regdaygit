@@ -24,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('/catalog', 'HomeController@catalog');
+Route::get('/changeTheme/{color}', 'HomeController@changeTheme');
 
 
   /**

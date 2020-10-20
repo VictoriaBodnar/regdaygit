@@ -271,4 +271,4 @@ public function arrayPaginator($array, $request)
       return redirect('/graf/'.$date_zamer.'/'.$type_zamer)->with('alert', 'Вилучено '.$sql.' рядки!');
       
     }
-}
+ }
